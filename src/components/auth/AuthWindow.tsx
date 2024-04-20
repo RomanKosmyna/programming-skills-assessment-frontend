@@ -5,12 +5,9 @@ type Props = {
     children: ReactNode
 };
 
-export default function AuthWindow({ heading, children }: Props) {
+export default function AuthWindow({ children }: Props) {
 
     return (
-        <div className="w-[700px] h-[400px] bg-slate-600">
-            
-            {children}
-        </div>
+        children
     )
 }
