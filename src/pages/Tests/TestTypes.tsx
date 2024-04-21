@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import TestTypeItem from "../../components/tests/TestTypeItem";
 import SeparationLine from "../../components/general/SeparationLine";
 
-export default function Tests() {
+export default function TestTypes() {
     const path = "https://localhost:7186/api/TestType/GetAll";
     const [testTypes, setTestTypes] = useState([]);
     const [hoveredItemId, setHoveredItemId] = useState(null);
