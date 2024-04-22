@@ -1,8 +1,9 @@
 import { useEffect, useState } from "react";
 import Heading from "../../../components/Heading/Heading";
-import TestTypeItem from "../../../components/testTypes/TestTypeItem";
+import TestTypeItem from "./TestTypeItem";
 
 import { getTestTypes } from "../api/getTestTypes";
+import { TestType } from "../types";
 
 export default function TestTypeList() {
     const [testTypes, setTestTypes] = useState([]);
@@ -33,7 +34,7 @@ export default function TestTypeList() {
             <div className="w-full max-w-[1150px] min-h-[calc(100vh-64px)] flex flex-col">
                 <Heading text="Tests" />
                 <ul className="w-full mt-10 flex flex-grow justify-between">
-                    {testTypes?.map((testType: any) => (
+                    {testTypes?.map((testType: TestType) => (
                         <TestTypeItem key={testType.testTypeID} testType={testType}
                             isItemHovered={hoveredItemId == testType.testTypeID}
                             handleMouseEnter={() => handleMouseEnter(testType.testTypeID)}

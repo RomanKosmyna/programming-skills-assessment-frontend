@@ -1,16 +1,6 @@
 import { Link } from "react-router-dom";
-import SeparationLine from "../general/SeparationLine";
-
-type TestTypeItemProps = {
-    testType: {
-        testTypeID: string;
-        testTypeName: string;
-        test: any[];
-    },
-    handleMouseEnter: any,
-    handleMouseLeave: any,
-    isItemHovered: any
-}
+import SeparationLine from "../../../components/general/SeparationLine";
+import { TestTypeItemProps } from "../types";
 
 export default function TestTypeItem(
     { testType, handleMouseEnter, handleMouseLeave, isItemHovered }: TestTypeItemProps
