@@ -21,8 +21,8 @@ export default function Header() {
                                     font-medium text-[14px]`} aria-label="Home">Home</Link>
                             </li>
                             <li>
-                                <Link to={"/tests"}
-                                    className={`${isRouteActive("/tests") ? "text-[#0070f3]" : "text-[#666666] hover:text-[#333]"} 
+                                <Link to={"/testTypes"}
+                                    className={`${isRouteActive("/testTypes") ? "text-[#0070f3]" : "text-[#666666] hover:text-[#333]"} 
                                     font-medium text-[14px]`}>Tests</Link>
                             </li>
                         </ul>

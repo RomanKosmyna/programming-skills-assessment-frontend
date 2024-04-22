@@ -4,7 +4,8 @@ import SignIn from "../../pages/SignIn/SignIn";
 import SignUp from "../../pages/SignUp/SignUp";
 import MainLayout from "../../layouts/Main/MainLayout";
 import Home from "../../pages/Home/Home";
-import TestTypes from "../../pages/Tests/TestTypes";
+import TestTypeList from "../../features/testTypes/components/TestTypesList";
+import Tests from "../../pages/Tests/Tests";
 
 export const router = createBrowserRouter([
     {
@@ -15,7 +16,10 @@ export const router = createBrowserRouter([
                 path: "/", element: <Home />
             },
             {
-                path: "tests", element: <TestTypes />
+                path: "testTypes", element: <TestTypeList />
+            },
+            {
+                path: "tests/:testTypeId", element: <Tests />
             }
         ]
     },
