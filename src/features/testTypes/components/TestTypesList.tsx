@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react";
 import Heading from "../../../components/Heading/Heading";
 import TestTypeItem from "./TestTypeItem";
+import { TestType } from "../types";
 
 import { getTestTypes } from "../api/getTestTypes";
-import { TestType } from "../types";
 
 export default function TestTypeList() {
     const [testTypes, setTestTypes] = useState([]);

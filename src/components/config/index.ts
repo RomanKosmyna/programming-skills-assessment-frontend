@@ -9,6 +9,7 @@ export const URLS = {
     },
     tests: {
         getAll: `${tests}/getAllTests`,
+        getById: (testId: string) => `${tests}/GetTestById/${testId}`,
         getByTestTypeId: (testTypeId: string) => `${tests}/getTestsByTestTypeId/${testTypeId}`
     }
 };

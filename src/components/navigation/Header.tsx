@@ -1,10 +1,6 @@
-import { Link, useLocation } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 
 export default function Header() {
-    const location = useLocation();
-    const isRouteActive = (linkRoute: string) => {
-        return location.pathname == linkRoute;
-    };
 
     return (
         <header className="w-full h-[64px] bg-[#fff] px-6 flex justify-center shadow-light">
@@ -16,14 +12,21 @@ export default function Header() {
                     <div className="ml-8">
                         <ul className="flex gap-x-7">
                             <li>
-                                <Link to={"/"}
-                                    className={`${isRouteActive("/") ? "text-[#0070f3]" : "text-[#666666] hover:text-[#333]"} 
-                                    font-medium text-[14px]`} aria-label="Home">Home</Link>
+                                <NavLink to={"/"} className={({ isActive }) =>
+                                    isActive ? "text-[#0070f3] font-medium text-[14px]" :
+                                        "text-[#666] hover:text-[#333] font-medium text-[14px]"
+                                }>
+                                    Home
+                                </NavLink>
                             </li>
                             <li>
-                                <Link to={"/testTypes"}
-                                    className={`${isRouteActive("/testTypes") ? "text-[#0070f3]" : "text-[#666666] hover:text-[#333]"} 
-                                    font-medium text-[14px]`}>Tests</Link>
+                                <NavLink to={"/tests"}
+                                    className={({ isActive }) =>
+                                        isActive ? "text-[#0070f3] font-medium text-[14px]" :
+                                            "text-[#666] hover:text-[#333] font-medium text-[14px]"
+                                    }>
+                                    Tests
+                                </NavLink>
                             </li>
                         </ul>
                     </div>
