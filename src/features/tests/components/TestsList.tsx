@@ -24,7 +24,7 @@ export default function TestsList() {
         const fetchData = async () => {
             if (testTypeId) {
                 const data = await getTestsByTestTypeId(testTypeId);
-
+                
                 setTests(data);
             }
         };
@@ -40,7 +40,7 @@ export default function TestsList() {
                 <Heading text="Tests" />
                 <ul className={`w-full mt-10 flex flex-grow
             ${tests.length < 3 ? "justify-start gap-7" : "justify-between"}`}>
-                    {tests?.map((test: Test) => (
+                    {Array.isArray(tests) && tests.map((test: Test) => (
                         <TestItem key={test.testID} test={test}
                             isItemHovered={hoveredItemId == test.testID}
                             handleMouseEnter={() => handleMouseEnter(test.testID)}

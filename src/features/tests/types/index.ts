@@ -2,6 +2,7 @@ export type Test = {
     testID: string,
     testTypeID: string,
     testName: string,
+    testedSkills: [string],
     durationMinutes?: number
 };
 
