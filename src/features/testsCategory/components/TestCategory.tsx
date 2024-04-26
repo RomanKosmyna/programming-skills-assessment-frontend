@@ -1,11 +1,11 @@
 import { Link } from "react-router-dom";
 import SeparationLine from "../../../components/general/SeparationLine";
-import { TestTypeItemProps } from "../types";
+import { TestCategoryProps } from "../types";
 
-export default function TestTypeItem(
-    { testType, handleMouseEnter, handleMouseLeave, isItemHovered }: TestTypeItemProps
+export default function TestCategory(
+    { testCategory, handleMouseEnter, handleMouseLeave, isItemHovered }: TestCategoryProps
 ) {
-    const { testTypeID, testTypeName } = testType;
+    const { testTypeID, testTypeName } = testCategory;
 
     return (
         <li

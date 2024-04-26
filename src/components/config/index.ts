@@ -4,7 +4,7 @@ const testTypes = "/testType";
 const tests = "/test";
 
 export const URLS = {
-    testTypes: {
+    testCategories: {
         getAll: `${testTypes}/getAllTestTypes`
     },
     tests: {

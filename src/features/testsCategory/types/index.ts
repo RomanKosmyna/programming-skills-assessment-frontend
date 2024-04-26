@@ -1,10 +1,10 @@
-export type TestType = {
+export type TestCategoryType = {
     testTypeID: string,
     testTypeName: string
 };
 
-export type TestTypeItemProps = {
-    testType: TestType,
+export type TestCategoryProps = {
+    testCategory: TestCategoryType,
     handleMouseEnter: () => void,
     handleMouseLeave: () => void,
     isItemHovered: boolean
