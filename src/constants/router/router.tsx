@@ -7,6 +7,7 @@ import Home from "../../pages/Home/Home";
 import TestTypeList from "../../features/testTypes/components/TestTypesList";
 import TestsList from "../../features/tests/components/TestsList";
 import Test from "../../features/specificTest/components/Test";
+import ActiveTest from "../../features/testing/components/ActiveTest";
 
 export const router = createBrowserRouter([
     {
@@ -24,6 +25,9 @@ export const router = createBrowserRouter([
             },
             {
                 path: "test/:testId", element: <Test />
+            },
+            {
+                path: "test/testing/:testId", element: <ActiveTest />
             }
         ]
     },

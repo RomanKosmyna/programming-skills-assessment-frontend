@@ -1,20 +1,24 @@
 import { useEffect, useState } from "react"
-import { useParams } from "react-router-dom";
-import { getTestById } from "../api/getTest";
+import { Link, useParams } from "react-router-dom";
+import { getTestWithRelatedData } from "../api/getTestWithRelatedData";
 import Heading from "../../../components/Heading/Heading";
 import { ITest } from "../../../interfaces";
 import SkillTag from "../../../components/general/SkillTag";
+import { useAppDispatch } from "../../../hooks";
+import { setData } from "../../counter/testDataSlice";
 
 export default function Test() {
     const [test, setTest] = useState<ITest | undefined>(undefined);
     const { testId } = useParams();
+    const dispatch = useAppDispatch();
 
     useEffect(() => {
         const fetchData = async () => {
             if (testId) {
-                const data = await getTestById(testId);
+                const data = await getTestWithRelatedData(testId);
 
                 setTest(data);
+                dispatch(setData(data));
             }
         };
 
@@ -46,7 +50,12 @@ export default function Test() {
                             {test.durationMinutes != 1 && <p>{test.durationMinutes} minutes</p>}
                         </div>
                     </div>
-                    <button className="mr-auto bg-lime-500 px-7 py-2 font-medium text-white rounded-md">Start</button>
+                    <Link
+                        to={`/test/testing/${test.testID}`}
+                        className="mr-auto bg-lime-500 px-7 py-2 font-medium text-white rounded-md"
+                    >
+                        Start
+                    </Link>
                 </>
             )}
         </div>
