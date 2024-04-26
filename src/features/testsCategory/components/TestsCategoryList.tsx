@@ -3,6 +3,8 @@ import { useTestCategories } from "../api/getTestCategories"
 import Heading from "../../../components/Heading/Heading";
 import { TestCategoryType } from "../types";
 import TestCategory from "./TestCategory";
+import ListLayout from "../../../components/Layout/ListLayout";
+import HoverWindow from "../../../components/Elements/Windows/HoverWindow";
 
 export default function TestCategoriesList() {
     const { isPending, isError, data } = useTestCategories();
@@ -15,7 +17,6 @@ export default function TestCategoriesList() {
     const handleMouseLeave = () => {
         setHoveredItemId(null);
     };
-console.log(data);
 
     if (isPending) {
         return (
@@ -42,9 +43,8 @@ console.log(data);
 
     return (
         <>
-            <div className={`fixed left-0 top-0 w-full h-full bg-black/[.3]
-            z-40 transition-opacity duration-500 ${hoveredItemId ? "block" : "hidden"}`}></div>
-            <div className="w-full max-w-[1150px] min-h-[calc(100vh-64px)] flex flex-col">
+            <HoverWindow hoveredItemId={hoveredItemId} />
+            <ListLayout>
                 <Heading text="Type of tests" />
                 <ul className={`w-full mt-10 flex flex-grow
                 ${data.length < 3 ? "justify-start" : "justify-between"}`}>
@@ -56,7 +56,7 @@ console.log(data);
                         />
                     ))}
                 </ul>
-            </div>
+            </ListLayout>
         </>
     )
 }
