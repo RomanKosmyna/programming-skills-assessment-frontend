@@ -17,6 +17,7 @@ export const getTestCategories = async (): Promise<TestCategoryType[]> => {
 export const useTestCategories = () => {
     return useQuery({
         queryKey: ['testCategories'],
-        queryFn: () => getTestCategories()
+        queryFn: () => getTestCategories(),
+        staleTime: 300000
     });
 };

@@ -1,4 +1,4 @@
-export type Test = {
+export type TestByCategoryType = {
     testID: string,
     testTypeID: string,
     testName: string,
@@ -6,8 +6,8 @@ export type Test = {
     durationMinutes?: number
 };
 
-export type TestItemProps = {
-    test: Test,
+export type TestByCategoryProps = {
+    testByCategory: TestByCategoryType,
     handleMouseEnter: () => void,
     handleMouseLeave: () => void,
     isItemHovered: boolean

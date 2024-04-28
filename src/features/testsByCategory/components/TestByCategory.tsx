@@ -1,17 +1,18 @@
 import { Link } from "react-router-dom";
-import { TestItemProps } from "../types";
 import Heading from "../../../components/Heading/Heading";
 import SkillTag from "../../../components/general/SkillTag";
 
-export default function TestItem(
-    { test, handleMouseEnter, handleMouseLeave, isItemHovered }: TestItemProps
+import { TestByCategoryProps } from "../types";
+
+export default function TestByCategory(
+    { testByCategory, handleMouseEnter, handleMouseLeave, isItemHovered }: TestByCategoryProps
 ) {
-    const { testID, testName, testedSkills, durationMinutes } = test;
+    const { testID, testName, testedSkills, durationMinutes } = testByCategory;
 
     return (
-        <li className={`w-[350px] h-[250px] bg-white shadow-lg border border-[#eaeaea] 
-        rounded-lg select-none ${isItemHovered ? "z-50 relative" : ""}`}
-            key={testID}
+        <li
+            className={`w-[350px] h-[250px] bg-white shadow-lg border border-[#eaeaea] 
+            rounded-lg select-none ${isItemHovered ? "z-50 relative" : ""}`}
             onMouseEnter={handleMouseEnter}
             onMouseLeave={handleMouseLeave}
         >
