@@ -14,7 +14,8 @@ export default {
         headingMain: "1.625rem"
       },
       boxShadow: {
-        light: "inset 0 -1px 0 0 #eaeaea"
+        light: "inset 0 -1px 0 0 #eaeaea",
+        borderLight: "inset 0 0 0 1px #eaeaea"
       }
     },
   },

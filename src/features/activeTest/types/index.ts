@@ -1,12 +1,13 @@
-export type SpecificTestType = {
+export type ActiveTestType = {
     testID: string,
     testTypeID: string,
     testName: string,
+    questions: [],
     description: string,
     durationMinutes?: number,
     testedSkills: [string]
 };
 
-export type SpecificTestProps = {
-    specificTest: SpecificTestType
+export type ActiveTestProps = {
+    activeTest: ActiveTestType
 }
