@@ -1,7 +1,7 @@
 import SeparationLine from "../general/SeparationLine";
 
 type Props = {
-    text: string;
+    text: string | undefined;
 };
 
 export default function Heading({ text }: Props) {

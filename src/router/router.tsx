@@ -6,6 +6,7 @@ import MainLayout from "../layouts/Main/MainLayout";
 import Home from "../pages/Home/Home";
 import TestCategoriesList from "../features/testCategories/components/TestCategoriesList";
 import TestsByCategoryList from "../features/testsByCategory/components/TestsByCategoryList";
+import SpecificTest from "../features/specificTest/components/SpecificTest";
 
 
 export const router = createBrowserRouter([
@@ -17,14 +18,14 @@ export const router = createBrowserRouter([
                 path: "/", element: <Home />
             },
             {
-                path: "tests", element: <TestCategoriesList />
+                path: "test-categories", element: <TestCategoriesList />
             },
             {
-                path: "tests/:testCategoryId", element: <TestsByCategoryList />
+                path: "test-categories/:testCategoryId", element: <TestsByCategoryList />
             },
-            // {
-            //     path: "test/:testId", element: <Test />
-            // },
+            {
+                path: "test/:specificTestId", element: <SpecificTest />
+            },
             // {
             //     path: "test/testing/:testId", element: <ActiveTest />
             // }

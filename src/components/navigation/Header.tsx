@@ -20,7 +20,7 @@ export default function Header() {
                                 </NavLink>
                             </li>
                             <li>
-                                <NavLink to={"/tests"}
+                                <NavLink to={"/test-categories"}
                                     className={({ isActive }) =>
                                         isActive ? "text-[#0070f3] font-medium text-[14px]" :
                                             "text-[#666] hover:text-[#333] font-medium text-[14px]"

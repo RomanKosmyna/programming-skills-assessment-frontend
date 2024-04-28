@@ -32,11 +32,20 @@ export default function TestsByCategoryList() {
 
     if (!data.length) return <div><h4>No tests by category found</h4></div>
 
+    const testByCategory = (testCategoryId: string) => {
+        if (testCategoryId == "3fa85f64-5717-4562-b3fc-2c963f66afc2")
+            {
+                return ".NET/C# Tests"
+            }
+    };
+    
+    const headingName = testByCategory(testCategoryId);
+
     return (
         <>
             <HoverWindow hoveredItemId={hoveredItemId} />
             <ListLayout>
-                <Heading text="Test Categories" />
+                <Heading text={headingName} />
                 <ul className={`w-full mt-10 flex flex-grow
                 ${data.length < 3 ? "gap-5 justify-start" : "justify-between"}`}>
                     {data.map((testByCategory: TestByCategoryType) => (
