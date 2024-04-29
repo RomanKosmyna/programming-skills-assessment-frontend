@@ -8,7 +8,8 @@ export default {
     extend: {
       colors: {
         green: "#427D9D",
-        main: "#153448"
+        main: "#FFF",
+        accent1: "#fafafa"
       },
       fontSize: {
         headingMain: "1.625rem"

@@ -28,11 +28,11 @@ export default function TestDurationTimer({ durationMinutes }: TestDurationTimer
     const minutes = Math.floor(remainingSeconds / 60);
     const seconds = remainingSeconds % 60;
     const formattedTimeLeft = `${minutes}:${seconds < 10 ? '0': ''}${seconds}`;
-
+    
     return (
-        <div className="flex pr-[4rem]">
+        <div className="flex mr-[4rem] px-3 py-2 bg-[#7AA2E3] text-main font-bold rounded-md">
             <p>Time left:</p>
-            <p className="pl-3">{formattedTimeLeft}</p>
+            <span className="pl-3">{formattedTimeLeft}</span>
             <p className="pl-1">minutes</p>
         </div>
     )

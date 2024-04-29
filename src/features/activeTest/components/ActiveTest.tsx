@@ -1,7 +1,6 @@
 import { useParams } from "react-router-dom";
 import GeneralLayout from "../../../components/Layout/GeneralLayout";
 import { useActiveTest } from "../api/getActiveTest";
-import Heading from "../../../components/Heading/Heading";
 import QuestionsTab from "./QuestionsTab";
 import TestDurationTimer from "./TestDurationTimer";
 import SeparationLine from "../../../components/general/SeparationLine";
@@ -23,7 +22,7 @@ export default function ActiveTest() {
 
     return (
         <GeneralLayout>
-            <div className="flex flex-col pt-3">
+            <div className="flex flex-col mt-3 bg-white">
                 <div className="flex justify-between items-center">
                     <h2 className="font-bold text-[36px]">{testName}</h2>
                     <TestDurationTimer durationMinutes={durationMinutes} />

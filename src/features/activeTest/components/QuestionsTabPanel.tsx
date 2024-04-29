@@ -1,22 +1,20 @@
 import { TabPanel, TabPanels } from "@chakra-ui/react";
 
+import QuestionList from "./QuestionList";
+
 type QuestionsTabPanelProps = {
     questions: [];
 };
 
-
 export default function QuestionsTabPanel({ questions }: QuestionsTabPanelProps) {
+
     return (
         <TabPanels className="max-w-[80%] mx-auto mt-10">
             {questions.map((question: any, index: number) => (
                 <TabPanel key={index}>
-                    <span>Question №{index + 1}</span>
-                    <h3 className="mt-6">{question.questionText}</h3>
-                    <div className="mt-5">
-                        {question.answerOptions.map((answerOption: any, index: number) => (
-                            <p key={index}>{answerOption.optionText}</p>
-                        ))}
-                    </div>
+                    <h3 className="font-bold text-[30px]">Question №{index + 1}</h3>
+                    <p className="mt-8 text-[24px]">{question.questionText}</p>
+                    <QuestionList answerOptions={question.answerOptions} />
                 </TabPanel>
             ))}
         </TabPanels>
