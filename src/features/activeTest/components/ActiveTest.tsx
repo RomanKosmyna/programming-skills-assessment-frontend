@@ -2,7 +2,9 @@ import { useParams } from "react-router-dom";
 import GeneralLayout from "../../../components/Layout/GeneralLayout";
 import { useActiveTest } from "../api/getActiveTest";
 import Heading from "../../../components/Heading/Heading";
-import QuestionNavigation from "./QuestionNavigation";
+import QuestionsTab from "./QuestionsTab";
+import TestDurationTimer from "./TestDurationTimer";
+import SeparationLine from "../../../components/general/SeparationLine";
 
 export default function ActiveTest() {
     const { activeTestId } = useParams();
@@ -17,13 +19,18 @@ export default function ActiveTest() {
 
     if (!data) return <div><h4>No test was found</h4></div>
 
-    const { testName, questions } = data;
+    const { testName, questions, durationMinutes } = data;
 
     return (
         <GeneralLayout>
-            <Heading text={testName}/>
-            <QuestionNavigation questions={questions}/>
-            {/* {JSON.stringify(data)} */}
+            <div className="flex flex-col pt-3">
+                <div className="flex justify-between items-center">
+                    <h2 className="font-bold text-[36px]">{testName}</h2>
+                    <TestDurationTimer durationMinutes={durationMinutes} />
+                </div>
+                <SeparationLine />
+            </div>
+            <QuestionsTab questions={questions} />
         </GeneralLayout>
     )
 }
