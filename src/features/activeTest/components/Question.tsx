@@ -1,7 +1,9 @@
 import { useState } from "react";
 import { useAppDispatch, useAppSelector } from "../../../hooks";
-import { addUserAnswerOptionIntoArray } from "../slices/activeTestSlice";
 
+import { addAnswerOptionWithNewArray } from "../util/addAnswerOptionWithNewArray";
+import { addAnswerOption } from "../util/addAnswerOption";
+import { removeAnswerOption } from "../util/removeAnswerOption";
 
 type QuestionProps = {
     answerOptions: {
@@ -18,27 +20,24 @@ export default function Question({ answerOptions, index }: QuestionProps) {
     const { questionID, optionNumber, optionText } = answerOptions;
     const [chosenAnswer, setChosenAnswer] = useState(false);
 
+    const questionData = {
+        questionID: questionID,
+        optionNumber: optionNumber
+    };
+
     const dispatch = useAppDispatch();
     const state = useAppSelector(state => state.activeTest.questions);
 
     const performTask = () => {
         const existingQuestion = state.some(question => question.questionID === questionID);
 
+        if (!existingQuestion) addAnswerOptionWithNewArray(dispatch, questionData, setChosenAnswer);
+
         if (existingQuestion) {
-            const existingQuestionIndex = state.findIndex(question => question.questionID === questionID);
-            
-            if (state[existingQuestionIndex].arrayOfAnswers.includes(optionNumber)) return;
+            if (chosenAnswer) removeAnswerOption(dispatch, questionData, setChosenAnswer);
+
+            if (!chosenAnswer) addAnswerOption(dispatch, questionData, setChosenAnswer);
         }
-
-        const questionData = {
-            questionID: questionID,
-            arrayOfAnswers: Array<number>()
-        };
-
-        questionData.arrayOfAnswers.push(optionNumber);
-
-        dispatch(addUserAnswerOptionIntoArray(questionData));
-        setChosenAnswer(true);
     };
 
     return (

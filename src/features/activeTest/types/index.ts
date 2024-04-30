@@ -11,3 +11,8 @@ export type ActiveTestType = {
 export type ActiveTestProps = {
     activeTest: ActiveTestType
 }
+
+export type AnswerOptionType = {
+    questionID: string;
+    optionNumber: number;
+};

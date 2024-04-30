@@ -10,6 +10,11 @@ interface QuestionState {
     arrayOfAnswers: any[];
 }
 
+interface OptionState {
+    questionID: string;
+    optionNumber: number;
+}
+
 const initialState: ActiveTestState = {
     questions: []
 }
@@ -18,7 +23,7 @@ export const activeTestSlice = createSlice({
     name: "activeTest",
     initialState,
     reducers: {
-        addUserAnswerOptionIntoArray: (state, action: PayloadAction<QuestionState>) => {
+        addAnswerOptionWithNewArray: (state, action: PayloadAction<QuestionState>) => {
             const { questionID, arrayOfAnswers } = action.payload;
 
             const questionExists = state.questions.some(question => question.questionID === questionID);
@@ -28,25 +33,25 @@ export const activeTestSlice = createSlice({
             } else {
                 const existingQuestionIndex = state.questions.findIndex(question => question.questionID === questionID);
 
-                
-
                 state.questions[existingQuestionIndex].arrayOfAnswers.push(...arrayOfAnswers);
             }
         },
-        // addUserAnswer: (state, action: PayloadAction<any>) => {
-        //     if (!state.value.includes(action.payload)) {
-        //         state.questionID = action.payload.questionID;
-        //         state.value.push(action.payload.arrayOfAnswers);
-        //     }
-        // },
-        // addUserAnswerIntoExistingArray: (state, action: PayloadAction<number>) => {
-        //     state.value.push(action.payload);
-        // },
-        // removeUserAnswer: (state, action: PayloadAction<any>) => {
-        //     if (state.value.includes(action.payload)) {
-        //         state.value = state.value.filter((answerOption: number) => answerOption != action.payload);
-        //     }
-        // }
+        addAnswer: (state, action: PayloadAction<OptionState>) => {
+            const { questionID, optionNumber } = action.payload;
+
+            const questionIndex = state.questions.findIndex(question => question.questionID === questionID);
+
+            state.questions[questionIndex].arrayOfAnswers.push(optionNumber);
+        },
+        removeAnswer: (state, action: PayloadAction<OptionState>) => {
+            const { questionID, optionNumber } = action.payload;
+
+            const questionIndex = state.questions.findIndex(question => question.questionID === questionID);
+
+            if (state.questions[questionIndex].arrayOfAnswers.includes(optionNumber)) {
+                state.questions[questionIndex].arrayOfAnswers = state.questions[questionIndex].arrayOfAnswers.filter((answerOption: number) => answerOption !== optionNumber);
+            }
+        }
     }
 });
 
@@ -55,6 +60,5 @@ export const selectExistingQuestion = createSelector(
     (value) => value.length
 );
 
-export const { addUserAnswerOptionIntoArray } = activeTestSlice.actions;
-//addUserAnswer, addUserAnswerIntoExistingArray, removeUserAnswer
+export const { addAnswerOptionWithNewArray, addAnswer, removeAnswer } = activeTestSlice.actions;
 export default activeTestSlice.reducer;
