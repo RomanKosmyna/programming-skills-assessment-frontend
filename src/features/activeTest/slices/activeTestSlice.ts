@@ -1,8 +1,8 @@
-import { PayloadAction, createSelector, createSlice } from "@reduxjs/toolkit"
-import { RootState } from "../../../redux/store";
+import { PayloadAction, createSlice } from "@reduxjs/toolkit"
 
 interface ActiveTestState {
     questions: QuestionState[];
+    questionsStatus: QuestionStatusState[]
 }
 
 interface QuestionState {
@@ -15,8 +15,14 @@ interface OptionState {
     optionNumber: number;
 }
 
+interface QuestionStatusState {
+    questionNumber: number;
+    isOptionChosen: boolean;
+}
+
 const initialState: ActiveTestState = {
-    questions: []
+    questions: [],
+    questionsStatus: []
 }
 
 export const activeTestSlice = createSlice({
@@ -51,14 +57,24 @@ export const activeTestSlice = createSlice({
             if (state.questions[questionIndex].arrayOfAnswers.includes(optionNumber)) {
                 state.questions[questionIndex].arrayOfAnswers = state.questions[questionIndex].arrayOfAnswers.filter((answerOption: number) => answerOption !== optionNumber);
             }
+        },
+        setQuestionStatus: (state, action: PayloadAction<QuestionStatusState>) => {
+            const { questionNumber } = action.payload;
+            const questionStatusIndex = state.questionsStatus.findIndex(questionsStatus => questionsStatus.questionNumber === questionNumber);
+
+            if (questionStatusIndex === -1) {
+                state.questionsStatus.push(action.payload);
+            }
+        },
+        activeQuestionStatus: (state, action: PayloadAction<QuestionStatusState>) => {
+            const { questionNumber } = action.payload;
+
+            const questionStatusIndex = state.questionsStatus.findIndex(questionsStatus => questionsStatus.questionNumber === questionNumber);
+            
+            state.questionsStatus[questionStatusIndex] = action.payload;
         }
     }
 });
 
-export const selectExistingQuestion = createSelector(
-    (state: RootState) => state.activeTest.questions,
-    (value) => value.length
-);
-
-export const { addAnswerOptionWithNewArray, addAnswer, removeAnswer } = activeTestSlice.actions;
+export const { addAnswerOptionWithNewArray, addAnswer, removeAnswer, setQuestionStatus, activeQuestionStatus } = activeTestSlice.actions;
 export default activeTestSlice.reducer;

@@ -1,7 +1,7 @@
 import { useParams } from "react-router-dom";
 import GeneralLayout from "../../../components/Layout/GeneralLayout";
 import { useActiveTest } from "../api/getActiveTest";
-import QuestionsTab from "./QuestionsTab";
+import QuestionsTabs from "./QuestionsTabs";
 import TestDurationTimer from "./TestDurationTimer";
 import SeparationLine from "../../../components/general/SeparationLine";
 
@@ -29,7 +29,7 @@ export default function ActiveTest() {
                 </div>
                 <SeparationLine />
             </div>
-            <QuestionsTab questions={questions} />
+            <QuestionsTabs questions={questions} />
         </GeneralLayout>
     )
 }
