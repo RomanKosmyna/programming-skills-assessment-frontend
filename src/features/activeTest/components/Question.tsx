@@ -56,7 +56,7 @@ export default function Question({ answerOptions, questionNumber, index }: Quest
     return (
         <div key={index}
             className={`max-w-[60%] px-5 py-3 rounded-lg cursor-pointer opacity-70 
-            hover:opacity-100 transition-all ${chosenAnswer ? "bg-lime-600" : "bg-[#6499E9]"}`}
+            hover:opacity-100 transition-opacity ${chosenAnswer ? "bg-lime-600" : "bg-[#6499E9]"}`}
             onClick={() => performTask()}
         >
             <p className="text-white">{optionText}</p>

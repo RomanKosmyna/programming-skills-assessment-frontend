@@ -4,6 +4,7 @@ import { useActiveTest } from "../api/getActiveTest";
 import QuestionsTabs from "./QuestionsTabs";
 import TestDurationTimer from "./TestDurationTimer";
 import SeparationLine from "../../../components/general/SeparationLine";
+import TestNavigationPanel from "./TestNavigationPanel";
 
 export default function ActiveTest() {
     const { activeTestId } = useParams();
@@ -19,6 +20,7 @@ export default function ActiveTest() {
     if (!data) return <div><h4>No test was found</h4></div>
 
     const { testName, questions, durationMinutes } = data;
+    const numberOfQuestions = questions.length;
 
     return (
         <GeneralLayout>
@@ -30,6 +32,7 @@ export default function ActiveTest() {
                 <SeparationLine />
             </div>
             <QuestionsTabs questions={questions} />
+            <TestNavigationPanel numberOfQuestions={numberOfQuestions}/>
         </GeneralLayout>
     )
 }
