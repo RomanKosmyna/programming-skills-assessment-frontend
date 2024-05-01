@@ -16,7 +16,8 @@ export default {
       },
       boxShadow: {
         light: "inset 0 -1px 0 0 #eaeaea",
-        borderLight: "inset 0 0 0 1px #eaeaea"
+        borderLight: "inset 0 0 0 1px #eaeaea",
+        instructionCards: "inset 0 0 10px 1px #eaeaea"
       }
     },
   },
