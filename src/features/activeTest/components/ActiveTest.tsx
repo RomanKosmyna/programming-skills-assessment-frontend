@@ -19,7 +19,7 @@ export default function ActiveTest() {
 
     if (!data) return <div><h4>No test was found</h4></div>
 
-    const { testName, questions, durationMinutes } = data;
+    const { testID, testName, questions, durationMinutes } = data;
     const numberOfQuestions = questions.length;
 
     return (
@@ -32,7 +32,7 @@ export default function ActiveTest() {
                 <SeparationLine />
             </div>
             <QuestionsTabs questions={questions} />
-            <TestNavigationPanel numberOfQuestions={numberOfQuestions}/>
+            <TestNavigationPanel testID={testID} numberOfQuestions={numberOfQuestions}/>
         </GeneralLayout>
     )
 }

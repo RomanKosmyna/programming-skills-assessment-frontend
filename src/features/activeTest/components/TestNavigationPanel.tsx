@@ -4,10 +4,11 @@ import { useAppSelector } from "../../../hooks"
 import UnansweredQuestionsWarningModal from "./UnansweredQuestionsWarningModal";
 
 type TestNavigationPanelProps = {
+    testID: string;
     numberOfQuestions: number;
 };
 
-export default function TestNavigationPanel({ numberOfQuestions }: TestNavigationPanelProps) {
+export default function TestNavigationPanel({ testID, numberOfQuestions }: TestNavigationPanelProps) {
     const state = useAppSelector(state => state.activeTest.questions);
     const numberOfQuestionsAnswered = state.length;
 
@@ -16,9 +17,9 @@ export default function TestNavigationPanel({ numberOfQuestions }: TestNavigatio
         if (numberOfQuestions !== numberOfQuestionsAnswered) {
             setIsActive(true);
         }
-
-        console.log(state);
     };
+    console.log(testID);
+    console.log(state);
 
     return (
         <>
