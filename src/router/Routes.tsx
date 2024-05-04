@@ -5,6 +5,7 @@ import MainLayout from "../layouts/Main/MainLayout";
 import Home from "../features/home/components/Home";
 import LoginForm from "../features/auth/components/LoginForm";
 import RegisterForm from "../features/auth/components/RegisterForm";
+import TestCategoriesList from "../features/testCategories/components/TestCategoriesList";
 
 
 export const router = createBrowserRouter([
@@ -19,6 +20,10 @@ export const router = createBrowserRouter([
                     {
                         path: "/",
                         element: <Home />
+                    },
+                    {
+                        path: "/test-categories",
+                        element: <TestCategoriesList />
                     }
                 ]
             },

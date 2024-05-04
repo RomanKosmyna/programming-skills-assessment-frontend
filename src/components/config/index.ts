@@ -1,7 +1,7 @@
 export const API_URL = "https://localhost:7186/api" as string;
 
 const account = "/account";
-const testTypes = "/testType";
+const testTypes = "/testCategory";
 const tests = "/test";
 
 export const URLS = {
@@ -10,7 +10,7 @@ export const URLS = {
         register: `${account}/register`
     },
     testCategories: {
-        getAll: `${testTypes}/getAllTestTypes`
+        getAll: `${testTypes}/getAllTestCategories`
     },
     testsByCategory: {
         getAll: `${tests}/getAllTests`,
