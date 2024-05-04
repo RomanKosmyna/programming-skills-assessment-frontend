@@ -33,7 +33,7 @@ export default function LoginForm() {
 
     return (
         <div className="w-full mt-16 flex flex-col items-center">
-            <h1 className="font-bold text-[40px]">Create your account</h1>
+            <h1 className="font-bold text-[40px]">Sign in with your account</h1>
             <AccountStatusNav
                 text="Do not have an account yet?"
                 linkRoute="/auth/register"
