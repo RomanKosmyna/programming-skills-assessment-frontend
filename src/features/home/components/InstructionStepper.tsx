@@ -36,7 +36,11 @@ export default function InstructionStepper() {
     return (
         <Stepper index={activeStep}>
             {steps.map((step, index) => (
-                <Step key={index} onClick={() => handleInstructionStep(index)}>
+                <Step
+                    key={index}
+                    onClick={() => handleInstructionStep(index)}
+                    className="cursor-pointer"
+                >
                     <StepIndicator>
                         <StepStatus
                             complete={<StepIcon />}

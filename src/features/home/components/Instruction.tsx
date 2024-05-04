@@ -8,7 +8,7 @@ export default function Instruction() {
 
     return (
         <div className="w-full pt-10 flex flex-col">
-            <ol className="w-full flex flex-col items-center gap-3">
+            <ol className="w-full flex flex-col gap-3">
                 <li className="max-w-[600px] max-h-[355px] bg-main shadow-instructionCards p-4 rounded-lg">
                     <div>
                         <h3 className="font-bold text-xl">Choose a Category of Interest for Assessment.</h3>
