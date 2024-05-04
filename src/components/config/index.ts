@@ -1,9 +1,14 @@
 export const API_URL = "https://localhost:7186/api" as string;
 
+const account = "/account";
 const testTypes = "/testType";
 const tests = "/test";
 
 export const URLS = {
+    account: {
+        login: `${account}/login`,
+        register: `${account}/register`
+    },
     testCategories: {
         getAll: `${testTypes}/getAllTestTypes`
     },

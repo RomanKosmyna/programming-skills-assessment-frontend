@@ -3,6 +3,7 @@ import { QueryClientProvider } from '@tanstack/react-query';
 import { ErrorBoundary } from 'react-error-boundary';
 import { HelmetProvider } from 'react-helmet-async';
 import { queryClient } from '../lib/react-query';
+import { ChakraProvider } from '@chakra-ui/react';
 
 type AppProviderProps = {
     children: React.ReactNode;
@@ -34,7 +35,9 @@ export const AppProvider = ({ children }: AppProviderProps) => {
             <ErrorBoundary FallbackComponent={ErrorFallback}>
                 <HelmetProvider>
                     <QueryClientProvider client={queryClient}>
-                        {children}
+                        <ChakraProvider>
+                            {children}
+                        </ChakraProvider>
                     </QueryClientProvider>
                 </HelmetProvider>
             </ErrorBoundary>

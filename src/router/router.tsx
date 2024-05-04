@@ -1,14 +1,13 @@
 import { createBrowserRouter } from "react-router-dom";
-import AuthLayout from "../layouts/Auth/AuthLayout";
+import AuthLayout from "../features/auth/components/AuthLayout";
 import SignIn from "../pages/SignIn/SignIn";
-import SignUp from "../pages/SignUp/SignUp";
 import MainLayout from "../layouts/Main/MainLayout";
 import TestCategoriesList from "../features/testCategories/components/TestCategoriesList";
 import TestsByCategoryList from "../features/testsByCategory/components/TestsByCategoryList";
 import SpecificTest from "../features/specificTest/components/SpecificTest";
 import ActiveTest from "../features/activeTest/components/ActiveTest";
 import Home from "../features/home/components/Home";
-
+import RegisterForm from "../features/auth/components/RegisterForm";
 
 export const router = createBrowserRouter([
     {
@@ -40,10 +39,10 @@ export const router = createBrowserRouter([
                 path: "", element: <SignIn />
             },
             {
-                path: "signin", element: <SignIn />
+                path: "login", element: <SignIn />
             },
             {
-                path: "signup", element: <SignUp />
+                path: "register", element: <RegisterForm />
             }
         ]
     }

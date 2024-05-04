@@ -3,7 +3,7 @@ import { Link, NavLink } from "react-router-dom";
 export default function Header() {
 
     return (
-        <header className="w-full h-[64px] bg-[#fff] px-6 flex justify-center shadow-light">
+        <header className="w-full h-[64px] bg-[#fff] px-6 flex justify-center shadow-light fixed z-20">
             <div className="w-full min-h-full max-w-[1400px] flex items-center">
                 <div>
                     <h1 className="font-medium text-[24px] mr-6">Programming skills assessment</h1>
