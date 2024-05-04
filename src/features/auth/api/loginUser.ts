@@ -21,9 +21,9 @@ export const login = async (data: LoginCredentialsDTO): Promise<UserResponse> =>
     const response = await fetch(API_URL + URLS.account.login, options);
 
     if (!response.ok) {
-        const errorData = await response.json();
-        
-        throw new Error(errorData[0].description);
+        if (response.status === 401) {
+            throw new Error("Username or password is incorrect");
+        }
     }
 
     return response.json();

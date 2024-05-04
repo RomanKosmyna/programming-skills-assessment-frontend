@@ -5,6 +5,7 @@ import AccountStatusNav from "./AccountStatusNav";
 import Button from "../../../components/Elements/Button/Button";
 import { Form } from "../../../components/Form";
 import { InputField } from "../../../components/Form/InputField";
+import GuestLink from "./GuestLink";
 
 type RegisterFormsInputs = {
     username: string;
@@ -43,33 +44,36 @@ export default function RegisterForm() {
                 linkRoute="/auth/login"
                 linkText="Log In"
             />
-            <Form className={"w-[450px] bg-main rounded-lg shadow-authForm p-4 mt-4"} schema={schema} onSubmit={handleRegister}>
-                {({ register, formState }) => (
-                    <>
-                        <InputField
-                            type="text"
-                            label="Username"
-                            error={formState.errors.username}
-                            registration={register("username")}
-                        />
-                        <InputField
-                            type="email"
-                            label="Email"
-                            error={formState.errors.email}
-                            registration={register("email")}
-                        />
-                        <InputField
-                            type="password"
-                            label="Password"
-                            error={formState.errors.password}
-                            registration={register("password")}
-                        />
-                        <div className="flex justify-center">
-                            <Button variant="primary" className="mt-6 text-main px-7 py-2 rounded-md" text="Register" type="submit" />
-                        </div>
-                    </>
-                )}
-            </Form>
+            <div className={"w-[450px] bg-main rounded-lg shadow-authForm p-4 mt-4"}>
+                <Form className={"w-full"} schema={schema} onSubmit={handleRegister}>
+                    {({ register, formState }) => (
+                        <>
+                            <InputField
+                                type="text"
+                                label="Username"
+                                error={formState.errors.username}
+                                registration={register("username")}
+                            />
+                            <InputField
+                                type="email"
+                                label="Email"
+                                error={formState.errors.email}
+                                registration={register("email")}
+                            />
+                            <InputField
+                                type="password"
+                                label="Password"
+                                error={formState.errors.password}
+                                registration={register("password")}
+                            />
+                            <div className="flex justify-center">
+                                <Button variant="primary" className="mt-6 text-main px-7 py-2 rounded-md" text="Register" type="submit" />
+                            </div>
+                        </>
+                    )}
+                </Form>
+                <GuestLink />
+            </div>
         </div>
     )
 }

@@ -1,6 +1,8 @@
 import { Link, NavLink } from "react-router-dom";
+import { useAuth } from "../../providers/useAuth";
 
 export default function Header() {
+    const { isLoggedIn, logout } = useAuth();
 
     return (
         <header className="w-full h-[64px] bg-[#fff] px-6 flex justify-center shadow-light fixed z-20">
@@ -30,9 +32,15 @@ export default function Header() {
                             </li>
                         </ul>
                     </div>
-                    <div>
-                        <Link to={"/auth"}>Sign in</Link>
-                    </div>
+                    {isLoggedIn() ? (
+                        <div>
+                            <button onClick={logout}>Log Out</button>
+                        </div>
+                    ) : (
+                        <div>
+                            <Link to={"/auth/login"}>Sign in</Link>
+                        </div>
+                    )}
                 </nav>
             </div>
         </header>
