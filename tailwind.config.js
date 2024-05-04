@@ -7,8 +7,9 @@ export default {
   theme: {
     extend: {
       colors: {
-        green: "#427D9D",
         main: "#FFF",
+        lightBlue: "#0070f3",
+        darkerLightBlue: "#005cdf",
         accent1: "#fafafa"
       },
       fontSize: {
@@ -17,7 +18,8 @@ export default {
       boxShadow: {
         light: "inset 0 -1px 0 0 #eaeaea",
         borderLight: "inset 0 0 0 1px #eaeaea",
-        instructionCards: "inset 0 0 10px 1px #eaeaea"
+        instructionCards: "inset 0 0 10px 1px #eaeaea",
+        authForm: "0 0 10px rgb(0 0 0 / 0.1)"
       }
     },
   },
