@@ -6,6 +6,7 @@ import Home from "../features/home/components/Home";
 import LoginForm from "../features/auth/components/LoginForm";
 import RegisterForm from "../features/auth/components/RegisterForm";
 import TestCategoriesList from "../features/testCategories/components/TestCategoriesList";
+import TestsByCategoryList from "../features/testsByCategory/components/TestsByCategoryList";
 
 
 export const router = createBrowserRouter([
@@ -22,8 +23,16 @@ export const router = createBrowserRouter([
                         element: <Home />
                     },
                     {
-                        path: "/test-categories",
+                        path: "test-categories",
                         element: <TestCategoriesList />
+                    },
+                    {
+                        path: "test-categories/:testCategoryId",
+                        element: <TestsByCategoryList />
+                    },
+                    {
+                        path: "test/:testId",
+                        element: <div></div>
                     }
                 ]
             },

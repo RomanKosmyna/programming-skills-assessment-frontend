@@ -25,21 +25,24 @@ export default function TestCategoriesList() {
     if (!data?.length) return <div><h4>No test categories found</h4></div>
 
     return (
-        <>
+        <main className="max-w-[1250px] min-h-[calc(100vh-64px)] pt-[64px] flex flex-col">
             <HoverWindow hoveredItemId={hoveredItemId} />
+            <Heading text="Test Categories" />
             <ListLayout>
-                <Heading text="Test Categories" />
-                <ul className={`w-full mt-10 flex flex-grow
-                ${data.length < 3 ? "gap-5 justify-start" : "justify-between"}`}>
-                    {data.map((testCategory: TestCategoryType) => (
-                        <TestCategory key={testCategory.testTypeID} testCategory={testCategory}
-                            isItemHovered={hoveredItemId == testCategory.testTypeID}
-                            handleMouseEnter={() => handleMouseEnter(testCategory.testTypeID)}
-                            handleMouseLeave={handleMouseLeave}
-                        />
-                    ))}
+                <ul className={`w-full mt-10 flex flex-wrap gap-5
+                ${data.length < 3 ? "justify-start" : "justify-between"}`}>
+                    {data
+                        .slice()
+                        .sort((a, b) => a.testCategoryName.localeCompare(b.testCategoryName))
+                        .map((testCategory: TestCategoryType) => (
+                            <TestCategory key={testCategory.testCategoryID} testCategory={testCategory}
+                                isItemHovered={hoveredItemId == testCategory.testCategoryID}
+                                handleMouseEnter={() => handleMouseEnter(testCategory.testCategoryID)}
+                                handleMouseLeave={handleMouseLeave}
+                            />
+                        ))}
                 </ul>
             </ListLayout>
-        </>
+        </main>
     )
 }

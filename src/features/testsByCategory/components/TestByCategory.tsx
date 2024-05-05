@@ -11,7 +11,7 @@ export default function TestByCategory(
 
     return (
         <li
-            className={`w-[350px] h-[250px] bg-white shadow-lg border border-[#eaeaea] 
+            className={`w-[350px] max-h-[350px] bg-white shadow-lg border border-[#eaeaea] 
             rounded-lg select-none ${isItemHovered ? "z-50 relative" : ""}`}
             onMouseEnter={handleMouseEnter}
             onMouseLeave={handleMouseLeave}
@@ -25,7 +25,7 @@ export default function TestByCategory(
                 </div>
                 <div className="mt-auto">
                     <p className="font-medium">Tested skills</p>
-                    <ul className="flex gap-2 mt-1">
+                    <ul className="flex flex-wrap gap-2 mt-1">
                         {testedSkills.map((skill: string, index: number) => <SkillTag key={index} text={skill} />)}
                     </ul>
                 </div>

@@ -5,7 +5,7 @@ import { API_URL, URLS } from "../../../components/config";
 import { TestByCategoryType } from "../types";
 
 export const getTestsByCategory = async (testCategoryId: string): Promise<TestByCategoryType[]> => {
-    const response = await fetch(API_URL + URLS.testsByCategory.getByTestTypeId(testCategoryId));
+    const response = await fetch(API_URL + URLS.testsByCategory.getByTestCategoryId(testCategoryId));
     
     if (!response.ok) {
         throw new Error(response.statusText);

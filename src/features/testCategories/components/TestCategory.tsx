@@ -5,7 +5,7 @@ import { TestCategoryProps } from "../types";
 export default function TestCategory(
     { testCategory, handleMouseEnter, handleMouseLeave, isItemHovered }: TestCategoryProps
 ) {
-    const { testTypeID, testTypeName } = testCategory;
+    const { testCategoryID, testCategoryName } = testCategory;
 
     return (
         <li
@@ -14,8 +14,8 @@ export default function TestCategory(
             onMouseEnter={handleMouseEnter}
             onMouseLeave={handleMouseLeave}
         >
-            <Link to={`/test-categories/${testTypeID}`} className="block w-full h-[250px] flex-grow p-6">
-                <h3 className="font-bold text-black text-[45px] ml-5">{testTypeName}</h3>
+            <Link to={`/test-categories/${testCategoryID}`} className="block w-full h-[250px] flex-grow p-6">
+                <h3 className="font-bold text-black text-[45px] ml-5">{testCategoryName}</h3>
                 <SeparationLine />
             </Link>
         </li>

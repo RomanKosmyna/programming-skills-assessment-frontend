@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react"
+import { useState } from "react"
 import { useParams } from "react-router-dom";
 import Heading from "../../../components/Heading/Heading";
 import TestByCategory from "./TestByCategory";
@@ -33,21 +33,20 @@ export default function TestsByCategoryList() {
     if (!data.length) return <div><h4>No tests by category found</h4></div>
 
     const testByCategory = (testCategoryId: string) => {
-        if (testCategoryId == "3fa85f64-5717-4562-b3fc-2c963f66afc2")
-            {
-                return ".NET/C# Tests"
-            }
+        if (testCategoryId == "a3f64587-39a1-41da-788e-08dc6ceef5d5") {
+            return ".NET/C# Tests"
+        }
     };
-    
+
     const headingName = testByCategory(testCategoryId);
 
     return (
-        <>
+        <main className="max-w-[1250px] min-h-[calc(100vh-64px)] pt-[64px] flex flex-col">
             <HoverWindow hoveredItemId={hoveredItemId} />
+            <Heading text={headingName} />
             <ListLayout>
-                <Heading text={headingName} />
-                <ul className={`w-full mt-10 flex flex-grow
-                ${data.length < 3 ? "gap-5 justify-start" : "justify-between"}`}>
+                <ul className={`w-full mt-10 flex flex-grow gap-5
+                ${data.length < 3 ? "justify-start" : "justify-between"}`}>
                     {data.map((testByCategory: TestByCategoryType) => (
                         <TestByCategory key={testByCategory.testID} testByCategory={testByCategory}
                             isItemHovered={hoveredItemId == testByCategory.testID}
@@ -57,6 +56,6 @@ export default function TestsByCategoryList() {
                     ))}
                 </ul>
             </ListLayout>
-        </>
+        </main>
     )
 }

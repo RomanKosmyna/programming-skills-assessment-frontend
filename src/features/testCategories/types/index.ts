@@ -1,6 +1,6 @@
 export type TestCategoryType = {
-    testTypeID: string,
-    testTypeName: string
+    testCategoryID: string,
+    testCategoryName: string
 };
 
 export type TestCategoryProps = {
