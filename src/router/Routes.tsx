@@ -7,6 +7,8 @@ import LoginForm from "../features/auth/components/LoginForm";
 import RegisterForm from "../features/auth/components/RegisterForm";
 import TestCategoriesList from "../features/testCategories/components/TestCategoriesList";
 import TestsByCategoryList from "../features/testsByCategory/components/TestsByCategoryList";
+import SpecificTest from "../features/specificTest/components/SpecificTest";
+import ActiveTest from "../features/activeTest/components/ActiveTest";
 
 
 export const router = createBrowserRouter([
@@ -31,8 +33,12 @@ export const router = createBrowserRouter([
                         element: <TestsByCategoryList />
                     },
                     {
-                        path: "test/:testId",
-                        element: <div></div>
+                        path: "test/:specificTestId",
+                        element: <SpecificTest />
+                    },
+                    {
+                        path: "test/active/:activeTestId",
+                        element: <ActiveTest />
                     }
                 ]
             },

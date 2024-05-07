@@ -29,7 +29,7 @@ export default function QuestionNavigationTab({ index }: QuestionNavigationTabPr
         <Tab
             _selected={{ bg: "#6499E9" }}
             key={index}
-            className={`px-8 py-2 ${isOptionChosen ? "bg-lime-600" : "bg-gray-300"} text-[22px] text-white rounded-md`}
+            className={`w-[45px] px-8 py-2 ${isOptionChosen ? "bg-lime-600" : "bg-gray-300"} text-[22px] text-white rounded-md`}
         >
             {index}
         </Tab>)

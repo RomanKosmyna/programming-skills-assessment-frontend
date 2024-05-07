@@ -1,11 +1,13 @@
 import { configureStore } from '@reduxjs/toolkit'
 import activeTestReducer from "../features/activeTest/slices/activeTestSlice";
-import activeInstructionStepSliceReducer from "../features/home/slices/activeInstructionStepSlice";
+import activeInstructionStepReducer from "../features/home/slices/activeInstructionStepSlice";
+import testResultReducer from "../features/activeTest/slices/testResultSlice";
 
 export const store = configureStore({
   reducer: {
     activeTest: activeTestReducer,
-    activeInstructionStep: activeInstructionStepSliceReducer
+    activeInstructionStep: activeInstructionStepReducer,
+    testResult: testResultReducer
   },
 })
 

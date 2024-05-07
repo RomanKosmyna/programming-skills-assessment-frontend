@@ -16,3 +16,13 @@ export type AnswerOptionType = {
     questionID: string;
     optionNumber: number;
 };
+
+export type ExpectedTestResultType = {
+    questionID: string;
+    isCorrect: [];
+}
+
+export type TestResultType = {
+    questionID: string;
+    arrayOfAnswers: number[];
+}

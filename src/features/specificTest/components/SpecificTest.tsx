@@ -23,7 +23,7 @@ export default function SpecificTest() {
     if (!data) return <div><h4>No test was found</h4></div>
 
     const testByCategory = () => {
-        if (data.testTypeID == "3fa85f64-5717-4562-b3fc-2c963f66afc2") {
+        if (data.testCategoryID == "a3f64587-39a1-41da-788e-08dc6ceef5d5") {
             return ".NET/C#"
         }
     };

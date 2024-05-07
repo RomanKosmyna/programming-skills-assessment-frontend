@@ -3,6 +3,7 @@ export const API_URL = "https://localhost:7186/api" as string;
 const account = "/account";
 const testTypes = "/testCategory";
 const tests = "/test";
+const testResult = "/testresult";
 
 export const URLS = {
     account: {
@@ -17,5 +18,8 @@ export const URLS = {
         getById: (testId: string) => `${tests}/GetTestById/${testId}`,
         getByIdWithRelatedTables: (testId: string) => `${tests}/GetTestByIdWithRelatedTables/${testId}`,
         getByTestCategoryId: (testTypeId: string) => `${tests}/getTestsByTestCategoryId/${testTypeId}`
+    },
+    testResult: {
+        formTestResult: (testId: string) => `${testResult}/formtestresult/${testId}`
     }
 };

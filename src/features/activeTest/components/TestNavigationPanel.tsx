@@ -1,7 +1,9 @@
 import { useState } from "react";
 
-import { useAppSelector } from "../../../hooks"
+import { useAppDispatch, useAppSelector } from "../../../hooks"
 import UnansweredQuestionsWarningModal from "./UnansweredQuestionsWarningModal";
+import { formTestResult } from "../api/formTestResult";
+import { finishTest } from "../slices/testResultSlice";
 
 type TestNavigationPanelProps = {
     testID: string;
@@ -10,16 +12,20 @@ type TestNavigationPanelProps = {
 
 export default function TestNavigationPanel({ testID, numberOfQuestions }: TestNavigationPanelProps) {
     const state = useAppSelector(state => state.activeTest.questions);
+    const dispatch = useAppDispatch();
+
     const numberOfQuestionsAnswered = state.length;
 
     const [isActive, setIsActive] = useState(false);
-    const areAllQuestionsAnswered = () => {
+    const finishTestAndSendData = () => {
         if (numberOfQuestions !== numberOfQuestionsAnswered) {
             setIsActive(true);
         }
+
+        formTestResult(testID, state);
+
+        dispatch(finishTest(true));
     };
-    console.log(testID);
-    console.log(state);
 
     return (
         <>
@@ -27,7 +33,7 @@ export default function TestNavigationPanel({ testID, numberOfQuestions }: TestN
                 <nav className="w-[55%] bg-[#F5F5F5] shadow-borderLight rounded-md p-4 flex justify-center">
                     <button className="bg-lime-600 px-4 py-2 text-white 
                 opacity-70 transition-opacity rounded-md hover:opacity-100"
-                        onClick={() => areAllQuestionsAnswered()}
+                        onClick={() => finishTestAndSendData()}
                     >
                         Finish Test
                     </button>

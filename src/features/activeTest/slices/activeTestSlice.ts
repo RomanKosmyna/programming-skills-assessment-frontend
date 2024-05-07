@@ -6,8 +6,8 @@ interface ActiveTestState {
 }
 
 interface QuestionState {
-    questionID: string | null;
-    arrayOfAnswers: any[];
+    questionID: string;
+    arrayOfAnswers: number[];
 }
 
 interface OptionState {

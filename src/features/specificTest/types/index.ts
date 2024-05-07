@@ -1,6 +1,6 @@
-export type SpecificTestType = {
+export type SpecificTest = {
     testID: string,
-    testTypeID: string,
+    testCategoryID: string,
     testName: string,
     description: string,
     durationMinutes?: number,
@@ -8,5 +8,5 @@ export type SpecificTestType = {
 };
 
 export type SpecificTestProps = {
-    specificTest: SpecificTestType
+    specificTest: SpecificTest
 }

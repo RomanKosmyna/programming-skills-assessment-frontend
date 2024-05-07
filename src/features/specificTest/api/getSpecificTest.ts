@@ -2,9 +2,9 @@ import { useQuery } from "@tanstack/react-query";
 
 import { API_URL, URLS } from "../../../components/config";
 
-import { SpecificTestType } from "../types";
+import { SpecificTest } from "../types";
 
-export const getSpecificTest = async (specificTestId: string): Promise<SpecificTestType> => {
+export const getSpecificTest = async (specificTestId: string): Promise<SpecificTest> => {
     const response = await fetch(API_URL + URLS.testsByCategory.getById(specificTestId));
     
     if (!response.ok) {
