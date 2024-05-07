@@ -8,6 +8,8 @@ export default {
     extend: {
       colors: {
         main: "#FFF",
+        accentBlue: "#7AA2E3",
+        hoverAccentBlue: "#6A92D3",
         lightBlue: "#0070f3",
         darkerLightBlue: "#005cdf",
         accent1: "#fafafa"

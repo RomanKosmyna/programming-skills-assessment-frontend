@@ -1,6 +1,7 @@
 import { useAppSelector } from "../../../hooks";
 import QuestionsTabs from "./QuestionsTabs";
 import TestNavigationPanel from "./TestNavigationPanel";
+import TestResult from "./TestResult";
 
 type Props = {
     questions: [],
@@ -20,6 +21,9 @@ export default function RenderTestInformation({ questions, testID, numberOfQuest
                     </div>
                     <TestNavigationPanel testID={testID} numberOfQuestions={numberOfQuestions} />
                 </>
+            )}
+            {isTestFinished && (
+                <TestResult/>
             )}
         </>
     )

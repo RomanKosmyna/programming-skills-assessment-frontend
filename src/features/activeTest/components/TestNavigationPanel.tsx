@@ -3,7 +3,7 @@ import { useState } from "react";
 import { useAppDispatch, useAppSelector } from "../../../hooks"
 import UnansweredQuestionsWarningModal from "./UnansweredQuestionsWarningModal";
 import { formTestResult } from "../api/formTestResult";
-import { finishTest } from "../slices/testResultSlice";
+import { finishTest, setResult } from "../slices/testResultSlice";
 
 type TestNavigationPanelProps = {
     testID: string;
@@ -12,19 +12,24 @@ type TestNavigationPanelProps = {
 
 export default function TestNavigationPanel({ testID, numberOfQuestions }: TestNavigationPanelProps) {
     const state = useAppSelector(state => state.activeTest.questions);
+    // const { result } = useAppSelector(state => state.testResult);
     const dispatch = useAppDispatch();
 
     const numberOfQuestionsAnswered = state.length;
 
     const [isActive, setIsActive] = useState(false);
-    const finishTestAndSendData = () => {
+    const finishTestAndSendData = async () => {
         if (numberOfQuestions !== numberOfQuestionsAnswered) {
             setIsActive(true);
         }
 
-        formTestResult(testID, state);
-
-        dispatch(finishTest(true));
+        try {
+            const result = await formTestResult(testID, state);
+            dispatch(setResult(result));
+            dispatch(finishTest(true));
+        } catch (error) {
+            console.log(error);
+        }
     };
 
     return (
