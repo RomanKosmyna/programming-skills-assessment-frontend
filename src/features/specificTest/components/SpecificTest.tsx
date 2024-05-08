@@ -32,21 +32,23 @@ export default function SpecificTest() {
 
     return (
         <GeneralLayout>
-            <Heading text={headingName} />
-            <div className="mt-8">
-                <h3 className="font-bold text-[40px]">{data.testName}</h3>
-                <div className="flex mt-8 gap-20">
-                    <TestDescription description={data.description} />
-                    <TestedSkills testedSkills={data.testedSkills} />
-                    <TestDuration durationMinutes={data.durationMinutes} />
-                </div>
+            <div className="p-4">
+                <Heading text={headingName} />
                 <div className="mt-8">
-                    <Link
-                        to={`/test/active/${data.testID}`}
-                        className="mr-auto bg-lime-500 px-7 py-2 font-medium text-white rounded-md"
-                    >
-                        Start
-                    </Link>
+                    <h3 className="font-bold text-[40px]">{data.testName}</h3>
+                    <div className="flex mt-8 gap-20">
+                        <TestDescription description={data.description} />
+                        <TestedSkills testedSkills={data.testedSkills} />
+                        <TestDuration durationMinutes={data.durationMinutes} />
+                    </div>
+                    <div className="mt-8">
+                        <Link
+                            to={`/test/active/${data.testID}`}
+                            className="mr-auto bg-lime-500 px-7 py-2 font-medium text-white rounded-md"
+                        >
+                            Start
+                        </Link>
+                    </div>
                 </div>
             </div>
         </GeneralLayout>

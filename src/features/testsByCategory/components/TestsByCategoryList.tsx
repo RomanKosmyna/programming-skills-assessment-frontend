@@ -7,6 +7,7 @@ import { useTestsByCategory } from "../api/getTestsByCategory";
 import HoverWindow from "../../../components/Elements/Windows/HoverWindow";
 import ListLayout from "../../../components/Layout/ListLayout";
 import { TestByCategoryType } from "../types";
+import GeneralLayout from "../../../components/Layout/GeneralLayout";
 
 export default function TestsByCategoryList() {
     const { testCategoryId } = useParams();
@@ -41,21 +42,23 @@ export default function TestsByCategoryList() {
     const headingName = testByCategory(testCategoryId);
 
     return (
-        <main className="max-w-[1250px] min-h-[calc(100vh-64px)] pt-[64px] flex flex-col">
+        <GeneralLayout>
             <HoverWindow hoveredItemId={hoveredItemId} />
-            <Heading text={headingName} />
-            <ListLayout>
-                <ul className={`w-full mt-10 flex flex-grow gap-5
+            <div className="p-4">
+                <Heading text={headingName} />
+                <ListLayout>
+                    <ul className={`w-full mt-10 flex flex-grow gap-5
                 ${data.length < 3 ? "justify-start" : "justify-between"}`}>
-                    {data.map((testByCategory: TestByCategoryType) => (
-                        <TestByCategory key={testByCategory.testID} testByCategory={testByCategory}
-                            isItemHovered={hoveredItemId == testByCategory.testID}
-                            handleMouseEnter={() => handleMouseEnter(testByCategory.testID)}
-                            handleMouseLeave={handleMouseLeave}
-                        />
-                    ))}
-                </ul>
-            </ListLayout>
-        </main>
+                        {data.map((testByCategory: TestByCategoryType) => (
+                            <TestByCategory key={testByCategory.testID} testByCategory={testByCategory}
+                                isItemHovered={hoveredItemId == testByCategory.testID}
+                                handleMouseEnter={() => handleMouseEnter(testByCategory.testID)}
+                                handleMouseLeave={handleMouseLeave}
+                            />
+                        ))}
+                    </ul>
+                </ListLayout>
+            </div>
+        </GeneralLayout>
     )
 }

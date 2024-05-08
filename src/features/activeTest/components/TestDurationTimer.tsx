@@ -13,31 +13,36 @@ export default function TestDurationTimer({ durationMinutes }: TestDurationTimer
     const dispatch = useAppDispatch();
 
     useEffect(() => {
-        dispatch(setTotalDurationTimer(durationMinutes!));
+        if (!isTestFinished) {
+            dispatch(setTotalDurationTimer(durationMinutes!));
 
-        const interval = setInterval(() => {
-            setRemainingSeconds((prevState) => {
-                if (prevState > 0) {
-                    return prevState - 1;
-                } else {
-                    clearInterval(interval);
-                    return 0;
-                }
-            });
-        }, 1000);
+            const interval = setInterval(() => {
+                setRemainingSeconds((prevState) => {
+                    if (prevState > 0) {
+                        return prevState - 1;
+                    } else {
+                        clearInterval(interval);
+                        return 0;
+                    }
+                });
+            }, 1000);
 
-        if (isTestFinished) {
-            dispatch(setRemainingDurationTimer(remainingSeconds));
-            clearInterval(interval);
+            if (isTestFinished) {
+                dispatch(setRemainingDurationTimer(remainingSeconds));
+                clearInterval(interval);
+            }
+
+            return () => clearInterval(interval);
         }
-
-        return () => clearInterval(interval);
+        else {
+            dispatch(setRemainingDurationTimer(remainingSeconds));
+        }
     }, [isTestFinished]);
 
     const minutes = Math.floor(remainingSeconds / 60);
     const seconds = remainingSeconds % 60;
-    const formattedTimeLeft = `${minutes}:${seconds < 10 ? '0': ''}${seconds}`;
-    
+    const formattedTimeLeft = `${minutes}:${seconds < 10 ? '0' : ''}${seconds}`;
+
     if (isTestFinished) return null;
 
     return (

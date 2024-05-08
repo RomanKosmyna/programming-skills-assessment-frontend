@@ -9,17 +9,19 @@ export default function TestResult() {
     const { result, totalDurationTimer, remainingDurationTimer } = useAppSelector(state => state.testResult);
 
     return (
-        <div className="w-full mt-10 flex flex-col items-center">
+        <div className="w-full mt-10 flex flex-col">
             <div className="w-full flex justify-start">
                 <h3 className="font-bold text-[36px]">Test Result</h3>
             </div>
-            <div className="w-full flex gap-10 mt-4">
-                <QuestionGeneralInformation result={result} />
-                <CompletionDate />
-                <TestResultTimeInfo
-                    totalDurationTimer={totalDurationTimer}
-                    remainingTime={remainingDurationTimer}
-                />
+            <div className="w-full flex justify-center mt-4">
+                <div className=" bg-accent1 shadow-borderLight p-3 rounded-lg gap-10 flex">
+                    <QuestionGeneralInformation result={result} />
+                    <CompletionDate />
+                    <TestResultTimeInfo
+                        totalDurationTimer={totalDurationTimer}
+                        remainingTime={remainingDurationTimer}
+                    />
+                </div>
             </div>
             <QuestionsOverview result={result} />
             <TestResultNavigation />
