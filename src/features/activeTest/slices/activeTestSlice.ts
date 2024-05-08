@@ -58,6 +58,9 @@ export const activeTestSlice = createSlice({
                 state.questions[questionIndex].arrayOfAnswers = state.questions[questionIndex].arrayOfAnswers.filter((answerOption: number) => answerOption !== optionNumber);
             }
         },
+        clearQuestions: (state) => {
+            state.questions = []
+        },
         setQuestionStatus: (state, action: PayloadAction<QuestionStatusState>) => {
             const { questionNumber } = action.payload;
             const questionStatusIndex = state.questionsStatus.findIndex(questionsStatus => questionsStatus.questionNumber === questionNumber);
@@ -70,11 +73,22 @@ export const activeTestSlice = createSlice({
             const { questionNumber } = action.payload;
 
             const questionStatusIndex = state.questionsStatus.findIndex(questionsStatus => questionsStatus.questionNumber === questionNumber);
-            
+
             state.questionsStatus[questionStatusIndex] = action.payload;
+        },
+        clearQuestionStatus: (state) => {
+            state.questionsStatus = []
         }
     }
 });
 
-export const { addAnswerOptionWithNewArray, addAnswer, removeAnswer, setQuestionStatus, activeQuestionStatus } = activeTestSlice.actions;
+export const {
+    addAnswerOptionWithNewArray,
+    addAnswer,
+    removeAnswer,
+    clearQuestions,
+    setQuestionStatus,
+    activeQuestionStatus,
+    clearQuestionStatus
+} = activeTestSlice.actions;
 export default activeTestSlice.reducer;

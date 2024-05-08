@@ -1,7 +1,7 @@
 import { useAppSelector } from "../../../hooks";
 import QuestionsTabs from "./QuestionsTabs";
 import TestNavigationPanel from "./TestNavigationPanel";
-import TestResult from "./TestResult";
+import TestResult from "./TestResult/TestResult";
 
 type Props = {
     questions: [],

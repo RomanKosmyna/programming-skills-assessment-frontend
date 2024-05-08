@@ -4,13 +4,15 @@ import { ExpectedTestResultType } from "../types";
 type TestResultState = {
     isTestFinished: boolean;
     result: ExpectedTestResultType[];
-    durationTimer: number;
+    totalDurationTimer: number;
+    remainingDurationTimer: number;
 };
 
 const initialState: TestResultState = {
     isTestFinished: false,
     result: [],
-    durationTimer: 0
+    totalDurationTimer: 0,
+    remainingDurationTimer: 0
 };
 
 export const testResultSlice = createSlice({
@@ -20,14 +22,26 @@ export const testResultSlice = createSlice({
         finishTest: (state, action: PayloadAction<boolean>) => {
             state.isTestFinished = action.payload;
         },
+        resetTest: (state) => {
+            state.isTestFinished = false;
+        },
         setResult: (state, action: PayloadAction<[]>) => {
             state.result = action.payload;
         },
-        setDurationTimer: (state, action: PayloadAction<number>) => {
-            state.durationTimer = action.payload;
+        setTotalDurationTimer: (state, action: PayloadAction<number>) => {
+            state.totalDurationTimer = action.payload;
+        },
+        setRemainingDurationTimer: (state, action: PayloadAction<number>) => {
+            state.remainingDurationTimer = action.payload;
         }
     }
 });
 
-export const { finishTest, setResult, setDurationTimer } = testResultSlice.actions;
+export const {
+    finishTest,
+    resetTest,
+    setResult,
+    setTotalDurationTimer,
+    setRemainingDurationTimer
+} = testResultSlice.actions;
 export default testResultSlice.reducer;

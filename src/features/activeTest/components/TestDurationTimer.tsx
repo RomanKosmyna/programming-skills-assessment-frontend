@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useAppDispatch, useAppSelector } from "../../../hooks";
-import { setDurationTimer } from "../slices/testResultSlice";
+import { setRemainingDurationTimer, setTotalDurationTimer } from "../slices/testResultSlice";
 
 type TestDurationTimerProps = {
     durationMinutes?: number;
@@ -13,6 +13,8 @@ export default function TestDurationTimer({ durationMinutes }: TestDurationTimer
     const dispatch = useAppDispatch();
 
     useEffect(() => {
+        dispatch(setTotalDurationTimer(durationMinutes!));
+
         const interval = setInterval(() => {
             setRemainingSeconds((prevState) => {
                 if (prevState > 0) {
@@ -25,7 +27,7 @@ export default function TestDurationTimer({ durationMinutes }: TestDurationTimer
         }, 1000);
 
         if (isTestFinished) {
-            dispatch(setDurationTimer(remainingSeconds));
+            dispatch(setRemainingDurationTimer(remainingSeconds));
             clearInterval(interval);
         }
 

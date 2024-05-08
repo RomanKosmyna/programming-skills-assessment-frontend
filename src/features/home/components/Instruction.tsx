@@ -56,7 +56,7 @@ export default function Instruction() {
                     />
                 </li>
             </ol>
-            <div className="w-full flex justify-center">
+            <div className="w-full flex justify-center mb-10">
                 <Link
                     className="bg-lime-600 px-6 py-2 mt-10 font-bold text-xl 
                     text-main flex justify-center rounded-lg transition-colors hover:bg-[#0A6847]"
