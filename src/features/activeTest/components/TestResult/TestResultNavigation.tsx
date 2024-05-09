@@ -1,29 +1,92 @@
 import { useNavigate } from "react-router-dom";
-import { useAppDispatch } from "../../../../hooks";
+import { useAppDispatch, useAppSelector } from "../../../../hooks";
 import { resetTest } from "../../slices/testResultSlice";
 import { clearQuestionStatus, clearQuestions } from "../../slices/activeTestSlice";
+import { API_URL, URLS } from "../../../../components/config";
+import { useToast } from "@chakra-ui/react";
 
 export default function TestResultNavigation() {
     const navigate = useNavigate();
     const dispatch = useAppDispatch();
+    const {
+        testCategoryID,
+        testName, result,
+        totalDurationTimer,
+        remainingDurationTimer
+    } = useAppSelector(state => state.testResult);
+    const toast = useToast();
 
-    const handleTestResultState = () => {
+    const handleTestResultState = (path: string) => {
         dispatch(resetTest());
         dispatch(clearQuestions());
         dispatch(clearQuestionStatus());
-        navigate("/test-categories");
+        navigate(path);
+    };
+
+    const handleSaveTestResults = async () => {
+        const token = localStorage.getItem("token");
+        const user = localStorage.getItem("user");
+        const { userName } = JSON.parse(user!);
+
+        const getUserId = await fetch(API_URL + URLS.account.getUserId, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+                "Authorization": `Bearer ${token}`
+            },
+            body: JSON.stringify(userName)
+        });
+        const { userId } = await getUserId.json();
+
+        const testResultData = {
+            testCategoryID: testCategoryID,
+            testName: testName,
+            questionData: result,
+            totalDurationTimer: totalDurationTimer,
+            remainingDurationTimer: remainingDurationTimer,
+            userID: userId
+        };
+
+        const saveTestResult = await fetch(API_URL + URLS.userTestResult.saveUserTestResult, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+                "Authorization": `Bearer ${token}`
+            },
+            body: JSON.stringify(testResultData)
+        });
+        if (saveTestResult.ok) {
+            toast({
+                title: 'Test results are saved.',
+                description: "Test results are successfully saved.",
+                status: 'success',
+                duration: 4000,
+                isClosable: true,
+            })
+            handleTestResultState("/my-test-results");
+        }
+        else {
+            toast({
+                title: 'Something went wrong.',
+                description: "Something went wrong. Please try again.",
+                status: 'error',
+                duration: 4000,
+                isClosable: true,
+            })
+        }
     };
 
     return (
         <div className="mt-10 flex justify-center">
             <nav className="bg-accent1 shadow-borderLight flex gap-10 p-3 rounded-lg">
                 <button
-                    onClick={handleTestResultState}
+                    onClick={() => handleTestResultState("/test-categories")}
                     className="bg-accentBlue font-bold text-main px-4 py-2 rounded-md transition-colors hover:bg-hoverAccentBlue"
                 >
                     Close Test
                 </button>
                 <button
+                    onClick={() => handleSaveTestResults()}
                     className="bg-accentBlue font-bold text-main px-4 py-2 rounded-md transition-colors hover:bg-hoverAccentBlue"
                 >
                     Save Results

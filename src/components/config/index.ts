@@ -4,11 +4,13 @@ const account = "/account";
 const testTypes = "/testCategory";
 const tests = "/test";
 const testResult = "/testresult";
+const userTestResult = "/usertestresult";
 
 export const URLS = {
     account: {
         login: `${account}/login`,
-        register: `${account}/register`
+        register: `${account}/register`,
+        getUserId: `${account}/getuserid` 
     },
     testCategories: {
         getAll: `${testTypes}/getAllTestCategories`
@@ -21,5 +23,8 @@ export const URLS = {
     },
     testResult: {
         formTestResult: (testId: string) => `${testResult}/formtestresult/${testId}`
+    },
+    userTestResult: {
+        saveUserTestResult: `${userTestResult}/savetestresult`
     }
 };

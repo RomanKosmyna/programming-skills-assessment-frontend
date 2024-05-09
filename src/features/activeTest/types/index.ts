@@ -1,6 +1,6 @@
 export type ActiveTestType = {
     testID: string,
-    testTypeID: string,
+    testCategoryID: string,
     testName: string,
     questions: [],
     description: string,
