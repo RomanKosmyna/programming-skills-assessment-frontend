@@ -30,6 +30,17 @@ export default function Header() {
                                     Tests
                                 </NavLink>
                             </li>
+                            {isLoggedIn() ? (
+                                <li>
+                                    <NavLink to={"/my-test-results"}
+                                        className={({ isActive }) =>
+                                            isActive ? "text-[#0070f3] font-medium text-[14px]" :
+                                                "text-[#666] hover:text-[#333] font-medium text-[14px]"
+                                        }>
+                                        Saved results
+                                    </NavLink>
+                                </li>
+                            ) : null}
                         </ul>
                     </div>
                     {isLoggedIn() ? (

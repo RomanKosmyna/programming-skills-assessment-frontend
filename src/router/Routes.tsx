@@ -9,6 +9,8 @@ import TestCategoriesList from "../features/testCategories/components/TestCatego
 import TestsByCategoryList from "../features/testsByCategory/components/TestsByCategoryList";
 import SpecificTest from "../features/specificTest/components/SpecificTest";
 import ActiveTest from "../features/activeTest/components/ActiveTest";
+import ProtectectedRoute from "./ProtectedRoute";
+import SavedTestResultsPage from "../features/savedTestResults/components/SavedTestResultsPage";
 
 
 export const router = createBrowserRouter([
@@ -39,6 +41,14 @@ export const router = createBrowserRouter([
                     {
                         path: "test/active/:activeTestId",
                         element: <ActiveTest />
+                    },
+                    {
+                        path: "my-test-results",
+                        element: (
+                            <ProtectectedRoute>
+                                <SavedTestResultsPage/>
+                            </ProtectectedRoute>
+                        )
                     }
                 ]
             },

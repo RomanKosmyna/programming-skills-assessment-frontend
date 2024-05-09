@@ -27,7 +27,7 @@ export default function UnansweredQuestionsWarningModal(
         <>
             {isActive && (
                 <div className="w-full min-h-screen absolute top-0 left-0 bg-black/50 z-10">
-                    <div className="max-w-[350px] mx-auto bg-white mt-[6rem] p-4 rounded-xl text-justify">
+                    <div className="max-w-[300px] mx-auto bg-white mt-[6rem] p-4 rounded-xl text-justify">
                         <p className="font-bold">Some of the questions remain unanswered.</p>
                         <p className="font-medium text-[#2d3748] mt-3">Are you sure that you want to finish the test?</p>
                         <div className="flex gap-5 justify-end mt-5">
