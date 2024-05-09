@@ -1,10 +1,28 @@
+import { useAppDispatch, useAppSelector } from "../../../hooks";
+import { formTestResult } from "../api/formTestResult";
+import { finishTest, setResult } from "../slices/testResultSlice";
+
 type UnansweredQuestionsWarningModalProps = {
     isActive: boolean;
     setIsActive: any;
+    testID: string;
 };
 
 export default function UnansweredQuestionsWarningModal(
-    { isActive, setIsActive }: UnansweredQuestionsWarningModalProps) {
+    { isActive, setIsActive, testID }: UnansweredQuestionsWarningModalProps) {
+    const state = useAppSelector(state => state.activeTest.questions);
+    const dispatch = useAppDispatch();
+
+    const finishTestAndSendData = async () => {
+        try {
+            const result = await formTestResult(testID, state);
+            dispatch(setResult(result));
+            dispatch(finishTest(true));
+        } catch (error) {
+            console.log(error);
+        }
+    };
+
     return (
         <>
             {isActive && (
@@ -14,6 +32,7 @@ export default function UnansweredQuestionsWarningModal(
                         <p className="font-medium text-[#2d3748] mt-3">Are you sure that you want to finish the test?</p>
                         <div className="flex gap-5 justify-end mt-5">
                             <button
+                            onClick={() => finishTestAndSendData()}
                                 className="bg-[#E72929] text-main px-6 py-2 rounded-md transition-opacity opacity-90 hover:opacity-100"
                             >
                                 Finish Test

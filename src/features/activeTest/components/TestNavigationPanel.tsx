@@ -12,7 +12,6 @@ type TestNavigationPanelProps = {
 
 export default function TestNavigationPanel({ testID, numberOfQuestions }: TestNavigationPanelProps) {
     const state = useAppSelector(state => state.activeTest.questions);
-    // const { result } = useAppSelector(state => state.testResult);
     const dispatch = useAppDispatch();
 
     const numberOfQuestionsAnswered = state.length;
@@ -22,13 +21,14 @@ export default function TestNavigationPanel({ testID, numberOfQuestions }: TestN
         if (numberOfQuestions !== numberOfQuestionsAnswered) {
             setIsActive(true);
         }
-
-        try {
-            const result = await formTestResult(testID, state);
-            dispatch(setResult(result));
-            dispatch(finishTest(true));
-        } catch (error) {
-            console.log(error);
+        else {
+            try {
+                const result = await formTestResult(testID, state);
+                dispatch(setResult(result));
+                dispatch(finishTest(true));
+            } catch (error) {
+                console.log(error);
+            }
         }
     };
 
@@ -44,7 +44,11 @@ export default function TestNavigationPanel({ testID, numberOfQuestions }: TestN
                     </button>
                 </nav>
             </div>
-            <UnansweredQuestionsWarningModal isActive={isActive} setIsActive={setIsActive} />
+            <UnansweredQuestionsWarningModal
+                isActive={isActive}
+                setIsActive={setIsActive}
+                testID={testID}
+            />
         </>
     )
 }
