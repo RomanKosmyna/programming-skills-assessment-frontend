@@ -3,6 +3,8 @@ import { useAuth } from "../../providers/useAuth";
 
 export default function Header() {
     const { isLoggedIn, logout } = useAuth();
+    const user = localStorage.getItem("user");
+    const { userName } = JSON.parse(user!) ?? {};
 
     return (
         <header className="w-full h-[64px] bg-[#fff] px-6 flex justify-center shadow-light fixed z-20">
@@ -32,7 +34,7 @@ export default function Header() {
                             </li>
                             {isLoggedIn() ? (
                                 <li>
-                                    <NavLink to={"/my-test-results"}
+                                    <NavLink to={`/my-test-results/${userName}`}
                                         className={({ isActive }) =>
                                             isActive ? "text-[#0070f3] font-medium text-[14px]" :
                                                 "text-[#666] hover:text-[#333] font-medium text-[14px]"

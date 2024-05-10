@@ -43,7 +43,7 @@ export const router = createBrowserRouter([
                         element: <ActiveTest />
                     },
                     {
-                        path: "my-test-results",
+                        path: "my-test-results/:username",
                         element: (
                             <ProtectectedRoute>
                                 <SavedTestResultsPage/>

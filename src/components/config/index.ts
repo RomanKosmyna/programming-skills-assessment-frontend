@@ -25,6 +25,7 @@ export const URLS = {
         formTestResult: (testId: string) => `${testResult}/formtestresult/${testId}`
     },
     userTestResult: {
-        saveUserTestResult: `${userTestResult}/savetestresult`
+        saveUserTestResult: `${userTestResult}/savetestresult`,
+        getAllUserTestResults: (username: string) => `${userTestResult}/getallusertestresults/${username}`
     }
 };
