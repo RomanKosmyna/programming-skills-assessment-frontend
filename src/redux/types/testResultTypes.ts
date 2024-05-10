@@ -1,4 +1,5 @@
 export type TestResultGeneralInfoType = {
-    testCategoryID: string | null,
-    testName: string | null,
+    testCategoryID: string | null;
+    testID?: string | null;
+    testName: string | null;
 };

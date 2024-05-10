@@ -1,7 +1,7 @@
 export type UserTestResultType = {
     testCategoryID: string;
+    testID: string;
     testName: string;
-    //questionData?: [];
     totalDurationTimer: number;
     remainingDurationTimer: number;
     userID: string;

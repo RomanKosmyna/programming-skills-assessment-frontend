@@ -10,7 +10,9 @@ export default function TestResultNavigation() {
     const dispatch = useAppDispatch();
     const {
         testCategoryID,
-        testName, result,
+        testID,
+        testName, 
+        result,
         totalDurationTimer,
         remainingDurationTimer
     } = useAppSelector(state => state.testResult);
@@ -40,6 +42,7 @@ export default function TestResultNavigation() {
 
         const testResultData = {
             testCategoryID: testCategoryID,
+            testID: testID,
             testName: testName,
             questionData: result,
             totalDurationTimer: totalDurationTimer,
@@ -63,7 +66,7 @@ export default function TestResultNavigation() {
                 duration: 4000,
                 isClosable: true,
             })
-            handleTestResultState("/my-test-results");
+            handleTestResultState(`/my-test-results/${userName}`);
         }
         else {
             toast({

@@ -24,6 +24,7 @@ export default function TestNavigationPanel({ testID, numberOfQuestions }: TestN
         else {
             try {
                 const result = await formTestResult(testID, state);
+                
                 dispatch(setResult(result));
                 dispatch(finishTest(true));
             } catch (error) {

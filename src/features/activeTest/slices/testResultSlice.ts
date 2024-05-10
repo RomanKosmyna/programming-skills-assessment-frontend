@@ -6,6 +6,7 @@ type TestResultState = {
     isTestFinished: boolean;
     testCategoryID: string | null;
     testName: string | null;
+    testID?: string | null;
     result: ExpectedTestResultType[];
     totalDurationTimer: number;
     remainingDurationTimer: number;
@@ -15,6 +16,7 @@ const initialState: TestResultState = {
     isTestFinished: false,
     testCategoryID: null,
     testName: null,
+    testID: null,
     result: [],
     totalDurationTimer: 0,
     remainingDurationTimer: 0
@@ -31,12 +33,13 @@ export const testResultSlice = createSlice({
             state.isTestFinished = false;
         },
         setGeneralTestInformation: (state, action: PayloadAction<TestResultGeneralInfoType>) => {
-            const { testCategoryID, testName } = action.payload;
+            const { testCategoryID, testID, testName } = action.payload;
 
+            state.testID = testID;
             state.testCategoryID = testCategoryID;
             state.testName = testName;
         },
-        setResult: (state, action: PayloadAction<[]>) => {
+        setResult: (state, action: PayloadAction<ExpectedTestResultType[]>) => {
             state.result = action.payload;
         },
         setTotalDurationTimer: (state, action: PayloadAction<number>) => {

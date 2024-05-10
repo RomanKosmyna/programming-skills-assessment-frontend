@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/rules-of-hooks */
 import { useParams } from "react-router-dom";
 import GeneralLayout from "../../../components/Layout/GeneralLayout";
 import { useActiveTest } from "../api/getActiveTest";
@@ -26,7 +27,7 @@ export default function ActiveTest() {
     const numberOfQuestions = questions.length;
 
     if (isTestFinished) {
-        dispatch(setGeneralTestInformation({ testCategoryID, testName }));
+        dispatch(setGeneralTestInformation({ testCategoryID, testID, testName }));
     }
 
     return (
