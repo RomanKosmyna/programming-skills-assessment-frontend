@@ -2,7 +2,7 @@ import { useNavigate } from "react-router-dom";
 import { useAppDispatch, useAppSelector } from "../../../../hooks";
 import { resetTest } from "../../slices/testResultSlice";
 import { clearQuestionStatus, clearQuestions } from "../../slices/activeTestSlice";
-import { API_URL, URLS } from "../../../../components/config";
+import { API_URL, URLS } from "../../../../config";
 import { useToast } from "@chakra-ui/react";
 import { useAuth } from "../../../../providers/useAuth";
 

@@ -1,10 +1,10 @@
-import HoverWindow from "src/components/Elements/Windows/HoverWindow";
-import Heading from "src/components/Heading/Heading";
-import GeneralLayout from "src/components/Layout/GeneralLayout";
-import PaddingLayout from "src/components/Layout/PaddingLayout";
-import { useHover } from "src/hooks/useHoverItem";
-
+import GeneralLayout from "@components/Layout/GeneralLayout";
+import PaddingLayout from "@components/Layout/PaddingLayout";
+import HoverWindow from "@components/Elements/Windows/HoverWindow";
 import TestCategoriesList from "./TestCategoriesList";
+import Heading from "@components/Heading/Heading";
+
+import { useHover } from "src/hooks/useHoverItem";
 
 export default function TestCategoriesPage() {
     const { handleMouseEnter, handleMouseLeave, hoveredItemId } = useHover();

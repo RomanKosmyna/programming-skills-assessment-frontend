@@ -1,5 +1,5 @@
 type HoverWindowProps = {
-    hoveredItemId: number | null;
+    hoveredItemId: string | null;
 };
 
 export default function HoverWindow({ hoveredItemId }: HoverWindowProps) {

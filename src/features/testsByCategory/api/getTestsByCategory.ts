@@ -1,6 +1,6 @@
 import { useQuery } from "@tanstack/react-query";
 
-import { API_URL, URLS } from "../../../components/config";
+import { API_URL, URLS } from "../../../config";
 
 import { TestByCategoryType } from "../types";
 

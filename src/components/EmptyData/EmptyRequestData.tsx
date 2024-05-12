@@ -1,11 +1,11 @@
 type Props = {
-    errorMessage: string;
+    message: string;
 };
 
-export default function RequestError({ errorMessage }: Props) {
+export default function EmptyRequestData({ message }: Props) {
     return (
         <div className="w-full flex min-h-[calc(100vh-64px)] justify-center items-center">
-            <h4>{errorMessage}</h4>
+            <h4>{message}</h4>
         </div>
     )
 }

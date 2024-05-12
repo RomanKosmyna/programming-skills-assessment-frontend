@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import SeparationLine from "../../../components/general/SeparationLine";
+import SeparationLine from "@components/general/SeparationLine";
 import { TestCategoryProps } from "../types";
 
 export default function TestCategory(
@@ -9,7 +9,7 @@ export default function TestCategory(
 
     return (
         <li
-            className={`w-[350px] h-[250px] bg-white shadow-lg border border-[#eaeaea] 
+            className={`w-full h-[250px] tablet:basis-1/2 desktop:w-[350px] bg-white shadow-lg border border-[#eaeaea] 
             rounded-lg select-none ${isItemHovered ? "z-50 relative" : ""}`}
             onMouseEnter={handleMouseEnter}
             onMouseLeave={handleMouseLeave}

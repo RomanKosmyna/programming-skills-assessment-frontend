@@ -23,6 +23,10 @@ export default {
         borderLight: "inset 0 0 0 1px #eaeaea",
         instructionCards: "inset 0 0 10px 1px #eaeaea",
         authForm: "0 0 10px rgb(0 0 0 / 0.1)"
+      },
+      screens: {
+        "tablet": "650px",
+        "desktop": "1150px"
       }
     },
   },

@@ -8,7 +8,7 @@ type Props = {
 export default function PaddingLayout({ children, padding = "4" }: Props) {
 
     return (
-        <div className={`p-[${padding}]`}>
+        <div className={`p-${padding}`}>
             {children}
         </div>
     )

@@ -1,9 +1,9 @@
 import { useState } from 'react';
 
 export const useHover = () => {
-    const [hoveredItemId, setHoveredItemId] = useState<number | null>(null);
+    const [hoveredItemId, setHoveredItemId] = useState<string | null>(null);
 
-    const handleMouseEnter = (itemId: number) => {
+    const handleMouseEnter = (itemId: string) => {
         setHoveredItemId(itemId);
     };
 

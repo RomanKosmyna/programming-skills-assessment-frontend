@@ -1,12 +1,17 @@
-import ListLayout from "src/components/Layout/ListLayout";
-import { useTestCategories } from "../api/getTestCategories"
-import { TestCategoryType } from "../types";
+import ListLayout from "@components/Layout/ListLayout";
 import TestCategory from "./TestCategory";
+import PendingSpinner from "@components/Pending/PendingSpinner";
+import RequestError from "@components/Error/RequestError";
+import EmptyRequestData from "@components/EmptyData/EmptyRequestData";
+
+import { TestCategoryType } from "../types";
+
+import { useTestCategories } from "../api/getTestCategories"
 
 type Props = {
-    handleMouseEnter: (itemId: number) => void;
+    handleMouseEnter: (itemId: string) => void;
     handleMouseLeave: () => void;
-    hoveredItemId: number | null;
+    hoveredItemId: string | null;
 };
 
 export default function TestCategoriesList(
@@ -14,21 +19,23 @@ export default function TestCategoriesList(
 ) {
     const { isPending, isError, data, error } = useTestCategories();
 
-    if (isPending) return <div>Loading...</div>
+    if (isPending) return <PendingSpinner />
 
-    if (isError) return <div>{error.message}</div>
+    if (isError) return <RequestError errorMessage={error?.message} />
 
-    if (!data?.length) return <div><h4>No test categories found</h4></div>
+    if (!data?.length) return <EmptyRequestData message="No test categories has been found" />
 
     return (
         <ListLayout>
-            <ul className={`w-full mt-10 flex flex-wrap gap-5
+            <ul className={`w-full mt-10 grid gap-4 grid-cols-1 tablet:grid-cols-2 desktop:grid-cols-3
                 ${data.length < 3 ? "justify-start" : "justify-between"}`}>
                 {data
                     .slice()
                     .sort((a, b) => a.testCategoryName.localeCompare(b.testCategoryName))
                     .map((testCategory: TestCategoryType) => (
-                        <TestCategory key={testCategory.testCategoryID} testCategory={testCategory}
+                        <TestCategory
+                            key={testCategory.testCategoryID}
+                            testCategory={testCategory}
                             isItemHovered={hoveredItemId == testCategory.testCategoryID}
                             handleMouseEnter={() => handleMouseEnter(testCategory.testCategoryID)}
                             handleMouseLeave={handleMouseLeave}
