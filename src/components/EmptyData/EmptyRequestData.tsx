@@ -4,7 +4,7 @@ type Props = {
 
 export default function EmptyRequestData({ message }: Props) {
     return (
-        <div className="w-full flex min-h-[calc(100vh-64px)] justify-center items-center">
+        <div className="w-full flex flex-grow justify-center items-center">
             <h4>{message}</h4>
         </div>
     )

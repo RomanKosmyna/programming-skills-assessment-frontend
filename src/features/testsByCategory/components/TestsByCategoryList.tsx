@@ -1,64 +1,45 @@
-import { useState } from "react"
-import { useParams } from "react-router-dom";
-import Heading from "../../../components/Heading/Heading";
-import TestByCategory from "./TestByCategory";
+import TestByCategoryItem from "./TestByCategoryItem";
+import ListLayout from "../../../components/Layout/ListLayout";
+import PendingSpinner from "@components/Pending/PendingSpinner";
+import RequestError from "@components/Error/RequestError";
+import EmptyRequestData from "@components/EmptyData/EmptyRequestData";
+
+import { TestByCategoryType } from "../types";
 
 import { useTestsByCategory } from "../api/getTestsByCategory";
-import HoverWindow from "../../../components/Elements/Windows/HoverWindow";
-import ListLayout from "../../../components/Layout/ListLayout";
-import { TestByCategoryType } from "../types";
-import GeneralLayout from "../../../components/Layout/GeneralLayout";
 
-export default function TestsByCategoryList() {
-    const { testCategoryId } = useParams();
-    const [hoveredItemId, setHoveredItemId] = useState(null);
+type Props = {
+    handleMouseEnter: (itemId: string) => void;
+    handleMouseLeave: () => void;
+    hoveredItemId: string | null;
+    testCategoryId: string | undefined;
+};
 
-    if (testCategoryId == undefined) {
-        return;
-    }
-
+export default function TestsByCategoryList(
+    { handleMouseEnter, handleMouseLeave, hoveredItemId, testCategoryId }: Props
+) {
     const { isPending, isError, data, error } = useTestsByCategory(testCategoryId);
 
-    const handleMouseEnter = (itemId: any) => {
-        setHoveredItemId(itemId);
-    };
+    if (isPending) return <PendingSpinner />
 
-    const handleMouseLeave = () => {
-        setHoveredItemId(null);
-    };
+    if (isError) return <RequestError errorMessage={error?.message} />
 
-    if (isPending) return <div>Loading...</div>
-
-    if (isError) return <div>{error.message}</div>
-
-    if (!data.length) return <div><h4>No tests by category found</h4></div>
-
-    const testByCategory = (testCategoryId: string) => {
-        if (testCategoryId == "a3f64587-39a1-41da-788e-08dc6ceef5d5") {
-            return ".NET/C# Tests"
-        }
-    };
-
-    const headingName = testByCategory(testCategoryId);
+    if (!data?.length) return <EmptyRequestData message="No tests with such category has been found" />
 
     return (
-        <GeneralLayout>
-            <HoverWindow hoveredItemId={hoveredItemId} />
-            <div className="p-4">
-                <Heading text={headingName} />
-                <ListLayout>
-                    <ul className={`w-full mt-10 flex flex-grow gap-5
+        <ListLayout>
+            <ul className={`w-full mt-10 grid gap-4 grid-cols-1 tablet:grid-cols-2 desktop:grid-cols-3
                 ${data.length < 3 ? "justify-start" : "justify-between"}`}>
-                        {data.map((testByCategory: TestByCategoryType) => (
-                            <TestByCategory key={testByCategory.testID} testByCategory={testByCategory}
-                                isItemHovered={hoveredItemId == testByCategory.testID}
-                                handleMouseEnter={() => handleMouseEnter(testByCategory.testID)}
-                                handleMouseLeave={handleMouseLeave}
-                            />
-                        ))}
-                    </ul>
-                </ListLayout>
-            </div>
-        </GeneralLayout>
+                {data.map((testByCategory: TestByCategoryType) => (
+                    <TestByCategoryItem
+                        key={testByCategory.testID}
+                        testByCategory={testByCategory}
+                        isItemHovered={hoveredItemId == testByCategory.testID}
+                        handleMouseEnter={() => handleMouseEnter(testByCategory.testID)}
+                        handleMouseLeave={handleMouseLeave}
+                    />
+                ))}
+            </ul>
+        </ListLayout>
     )
 }

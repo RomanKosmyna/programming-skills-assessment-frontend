@@ -2,7 +2,7 @@ import dotnet from "@features/testCategories/assets/net.webp";
 import java from "@features/testCategories/assets/java.png";
 import javascript from "@features/testCategories/assets/javascript.png";
 
-export const getTestCategoryImage = (testCategoryID: string) => {
+export const getTestCategoryImage = (testCategoryID: string | undefined) => {
     switch (testCategoryID) {
         case "a3f64587-39a1-41da-788e-08dc6ceef5d5":
             return dotnet;

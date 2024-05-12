@@ -8,7 +8,7 @@ type Props = {
 export default function PaddingLayout({ children, padding = "4" }: Props) {
 
     return (
-        <div className={`p-${padding}`}>
+        <div className={`w-full min-h-[calc(100vh-64px)] flex flex-col p-${padding}`}>
             {children}
         </div>
     )
