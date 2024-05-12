@@ -1,9 +1,9 @@
 import { Link } from "react-router-dom";
 import Heading from "../../../components/Heading/Heading";
-import SkillTag from "../../../components/General/SkillTag";
+import SkillTagList from "@components/General/SkillTagList";
 
 import { TestByCategoryProps } from "../types";
-import SkillTagList from "@components/General/SkillTagList";
+import TestDuration from "@components/General/TestDuration";
 
 export default function TestByCategoryItem(
     { testByCategory, handleMouseEnter, handleMouseLeave, isItemHovered }: TestByCategoryProps
@@ -19,11 +19,7 @@ export default function TestByCategoryItem(
         >
             <Link to={`/test/${testID}`} className="flex w-full min-h-full flex-col flex-grow p-6">
                 <Heading text={testName} />
-                <div className="mt-4">
-                    <span className="font-medium text-[17px]">Duration: </span>
-                    {durationMinutes == 1 && <span className="font-medium">{durationMinutes} minute</span>}
-                    {durationMinutes != 1 && <span className="font-medium">{durationMinutes} minutes</span>}
-                </div>
+                <TestDuration durationMinutes={durationMinutes} />
                 <div className="mt-5">
                     <p className="font-medium">Tested skills</p>
                     <SkillTagList testedSkills={testedSkills} />
