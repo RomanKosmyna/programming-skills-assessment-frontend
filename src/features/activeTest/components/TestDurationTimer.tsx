@@ -14,7 +14,7 @@ export default function TestDurationTimer({ durationMinutes }: TestDurationTimer
 
     useEffect(() => {
         if (!isTestFinished) {
-            dispatch(setTotalDurationTimer(durationMinutes!));
+            dispatch(setTotalDurationTimer(totalSeconds!));
 
             const interval = setInterval(() => {
                 setRemainingSeconds((prevState) => {

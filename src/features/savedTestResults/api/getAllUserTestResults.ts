@@ -21,7 +21,6 @@ export const getAllUserTestResults = async (token: string, username: string): Pr
 export const useAllUserTestResults = (token: string, username: string) => {
     return useQuery({
         queryKey: ['allUserTestResults', username],
-        queryFn: () => getAllUserTestResults(token, username),
-        staleTime: 300000
+        queryFn: () => getAllUserTestResults(token, username)
     });
 };

@@ -10,6 +10,8 @@ type TestResultState = {
     result: ExpectedTestResultType[];
     totalDurationTimer: number;
     remainingDurationTimer: number;
+    completionHour: string | null;
+    completionDate: string | null;
 };
 
 const initialState: TestResultState = {
@@ -19,7 +21,9 @@ const initialState: TestResultState = {
     testID: null,
     result: [],
     totalDurationTimer: 0,
-    remainingDurationTimer: 0
+    remainingDurationTimer: 0,
+    completionHour: null,
+    completionDate: null
 };
 
 export const testResultSlice = createSlice({
@@ -39,6 +43,12 @@ export const testResultSlice = createSlice({
             state.testCategoryID = testCategoryID;
             state.testName = testName;
         },
+        setCompletionHour: (state, action: PayloadAction<string>) => {
+            state.completionHour = action.payload;
+        },
+        setCompletionDate: (state, action: PayloadAction<string>) => {
+            state.completionDate = action.payload;
+        },
         setResult: (state, action: PayloadAction<ExpectedTestResultType[]>) => {
             state.result = action.payload;
         },
@@ -55,6 +65,8 @@ export const {
     finishTest,
     resetTest,
     setGeneralTestInformation,
+    setCompletionHour,
+    setCompletionDate,
     setResult,
     setTotalDurationTimer,
     setRemainingDurationTimer

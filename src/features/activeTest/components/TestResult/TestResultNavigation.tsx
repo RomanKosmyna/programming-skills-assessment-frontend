@@ -4,17 +4,21 @@ import { resetTest } from "../../slices/testResultSlice";
 import { clearQuestionStatus, clearQuestions } from "../../slices/activeTestSlice";
 import { API_URL, URLS } from "../../../../components/config";
 import { useToast } from "@chakra-ui/react";
+import { useAuth } from "../../../../providers/useAuth";
 
 export default function TestResultNavigation() {
+    const { isLoggedIn } = useAuth();
     const navigate = useNavigate();
     const dispatch = useAppDispatch();
     const {
         testCategoryID,
         testID,
-        testName, 
+        testName,
         result,
         totalDurationTimer,
-        remainingDurationTimer
+        remainingDurationTimer,
+        completionHour,
+        completionDate
     } = useAppSelector(state => state.testResult);
     const toast = useToast();
 
@@ -47,7 +51,9 @@ export default function TestResultNavigation() {
             questionData: result,
             totalDurationTimer: totalDurationTimer,
             remainingDurationTimer: remainingDurationTimer,
-            userID: userId
+            userID: userId,
+            completionHour: completionHour,
+            completionDate: completionDate
         };
 
         const saveTestResult = await fetch(API_URL + URLS.userTestResult.saveUserTestResult, {
@@ -88,12 +94,14 @@ export default function TestResultNavigation() {
                 >
                     Close Test
                 </button>
-                <button
-                    onClick={() => handleSaveTestResults()}
-                    className="bg-accentBlue font-bold text-main px-4 py-2 rounded-md transition-colors hover:bg-hoverAccentBlue"
-                >
-                    Save Results
-                </button>
+                {isLoggedIn() && (
+                    <button
+                        onClick={() => handleSaveTestResults()}
+                        className="bg-accentBlue font-bold text-main px-4 py-2 rounded-md transition-colors hover:bg-hoverAccentBlue"
+                    >
+                        Save Results
+                    </button>
+                )}
                 <button
                     className="bg-accentBlue font-bold text-main px-4 py-2 rounded-md transition-colors hover:bg-hoverAccentBlue"
                 >

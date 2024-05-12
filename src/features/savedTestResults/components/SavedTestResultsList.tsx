@@ -33,13 +33,14 @@ export default function SavedTestResultsList() {
     return (
         <>
             <HoverWindow hoveredItemId={hoveredItemId} />
-            <ul className="w-full mt-10">
+            <ul className={`w-full mt-10 flex flex-wrap gap-5
+                ${data.length < 3 ? "justify-start" : "justify-between"}`} >
                 {data.map((testResult: UserTestResultType, index: number) => (
                     <SavedTestResultItem
                         key={index}
                         testResult={testResult}
-                        isItemHovered={hoveredItemId == testResult.testID}
-                        handleMouseEnter={() => handleMouseEnter(testResult.testID)}
+                        isItemHovered={hoveredItemId == testResult.userTestResultID}
+                        handleMouseEnter={() => handleMouseEnter(testResult.userTestResultID)}
                         handleMouseLeave={handleMouseLeave}
                     />
                 ))}

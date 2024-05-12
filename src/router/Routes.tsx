@@ -11,6 +11,7 @@ import SpecificTest from "../features/specificTest/components/SpecificTest";
 import ActiveTest from "../features/activeTest/components/ActiveTest";
 import ProtectectedRoute from "./ProtectedRoute";
 import SavedTestResultsPage from "../features/savedTestResults/components/SavedTestResultsPage";
+import TestResultInformation from "../features/savedTestResults/components/TestResultInformation";
 
 
 export const router = createBrowserRouter([
@@ -46,7 +47,15 @@ export const router = createBrowserRouter([
                         path: "my-test-results/:username",
                         element: (
                             <ProtectectedRoute>
-                                <SavedTestResultsPage/>
+                                <SavedTestResultsPage />
+                            </ProtectectedRoute>
+                        )
+                    },
+                    {
+                        path: "my-test-results/result/:userTestResultID",
+                        element: (
+                            <ProtectectedRoute>
+                                <TestResultInformation />
                             </ProtectectedRoute>
                         )
                     }

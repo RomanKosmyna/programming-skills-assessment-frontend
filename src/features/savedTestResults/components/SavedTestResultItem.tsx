@@ -12,7 +12,7 @@ type Props = {
 export default function SavedTestResultItem(
     { testResult, handleMouseEnter, handleMouseLeave, isItemHovered }: Props
 ) {
-    const { testName } = testResult;
+    const { userTestResultID, testName, completionHour, completionDate } = testResult;
 
     return (
         <li
@@ -21,12 +21,12 @@ export default function SavedTestResultItem(
             onMouseEnter={handleMouseEnter}
             onMouseLeave={handleMouseLeave}
         >
-            <Link to={`/test-result/`} className="flex w-full min-h-full flex-col flex-grow p-6">
+            <Link to={`/my-test-results/result/${userTestResultID}`} className="flex w-full min-h-full flex-col flex-grow p-6">
                 <Heading text={testName} />
-                <div className="mt-4">
-                    {/* <span className="font-medium text-[17px]">Duration: </span>
-                    {durationMinutes == 1 && <span className="font-medium">{durationMinutes} minute</span>}
-                    {durationMinutes != 1 && <span className="font-medium">{durationMinutes} minutes</span>} */}
+                <div className="flex flex-col mt-4">
+                    <span className="font-bold">Completion Date</span>
+                    <span className="font-medium">Hour: {completionHour}</span>
+                    <span className="font-medium">Date: {completionDate}</span>
                 </div>
             </Link>
         </li>
