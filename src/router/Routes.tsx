@@ -5,14 +5,13 @@ import MainLayout from "../layouts/Main/MainLayout";
 import Home from "../features/home/components/Home";
 import LoginForm from "../features/auth/components/LoginForm";
 import RegisterForm from "../features/auth/components/RegisterForm";
-import TestCategoriesList from "../features/testCategories/components/TestCategoriesList";
 import TestsByCategoryList from "../features/testsByCategory/components/TestsByCategoryList";
 import SpecificTest from "../features/specificTest/components/SpecificTest";
 import ActiveTest from "../features/activeTest/components/ActiveTest";
 import ProtectectedRoute from "./ProtectedRoute";
 import SavedTestResultsPage from "../features/savedTestResults/components/SavedTestResultsPage";
 import TestResultInformation from "../features/savedTestResults/components/TestResultInformation";
-
+import TestCategoriesPage from "../features/testCategories/components/TestCategoriesPage";
 
 export const router = createBrowserRouter([
     {
@@ -29,7 +28,7 @@ export const router = createBrowserRouter([
                     },
                     {
                         path: "test-categories",
-                        element: <TestCategoriesList />
+                        element: <TestCategoriesPage />
                     },
                     {
                         path: "test-categories/:testCategoryId",
@@ -52,7 +51,7 @@ export const router = createBrowserRouter([
                         )
                     },
                     {
-                        path: "my-test-results/result/:userTestResultID",
+                        path: "my-test-results/result/:userTestResultId",
                         element: (
                             <ProtectectedRoute>
                                 <TestResultInformation />

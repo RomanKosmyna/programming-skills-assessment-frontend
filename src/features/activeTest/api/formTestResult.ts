@@ -21,6 +21,7 @@ export const formTestResult = async (activeTestId: string, requestBody: TestResu
 export const useFormTestResult = (activeTestId: string, requestBody: [TestResultType]) => {
     return useQuery({
         queryKey: ['formTestResult', activeTestId],
-        queryFn: () => formTestResult(activeTestId, requestBody)
+        queryFn: () => formTestResult(activeTestId, requestBody),
+        retry: false
     });
 };

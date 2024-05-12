@@ -1,7 +1,8 @@
+import { QuestionDataType } from "../../../savedTestResults/type";
 import { ExpectedTestResultType } from "../../types";
 
 type Props = {
-    result: ExpectedTestResultType[];
+    result: ExpectedTestResultType[] | QuestionDataType[];
 };
 
 export default function QuestionGeneralInformation({ result }: Props) {

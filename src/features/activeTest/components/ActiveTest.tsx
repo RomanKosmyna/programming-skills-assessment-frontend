@@ -1,5 +1,5 @@
 /* eslint-disable react-hooks/rules-of-hooks */
-import { useParams } from "react-router-dom";
+import { useBlocker, useParams } from "react-router-dom";
 import GeneralLayout from "../../../components/Layout/GeneralLayout";
 import { useActiveTest } from "../api/getActiveTest";
 import TestDurationTimer from "./TestDurationTimer";
@@ -7,6 +7,7 @@ import SeparationLine from "../../../components/general/SeparationLine";
 import RenderTestInformation from "./RenderTestInformation";
 import { useAppDispatch, useAppSelector } from "../../../hooks";
 import { setGeneralTestInformation } from "../slices/testResultSlice";
+import { useState } from "react";
 
 export default function ActiveTest() {
     const { activeTestId } = useParams();
@@ -14,6 +15,13 @@ export default function ActiveTest() {
     const dispatch = useAppDispatch();
 
     if (activeTestId == undefined) return;
+    // let [value, setValue] = useState(false);
+
+    // let navBlocker = useBlocker(
+    //     ({ currentLocation, nextLocation }) =>
+    //         !value &&
+    //         currentLocation.pathname !== nextLocation.pathname
+    // );
 
     const { isPending, isError, data, error } = useActiveTest(activeTestId);
 
@@ -28,6 +36,7 @@ export default function ActiveTest() {
 
     if (isTestFinished) {
         dispatch(setGeneralTestInformation({ testCategoryID, testID, testName }));
+        setValue(true);
     }
 
     return (
@@ -36,7 +45,7 @@ export default function ActiveTest() {
                 <div className="flex flex-col mt-3">
                     <div className="flex justify-between items-center">
                         <h2 className="font-bold text-[36px]">{testName}</h2>
-                        <TestDurationTimer durationMinutes={durationMinutes} />
+                        <TestDurationTimer testID={testID} durationMinutes={durationMinutes} />
                     </div>
                     <SeparationLine />
                 </div>
@@ -49,6 +58,20 @@ export default function ActiveTest() {
             {isTestFinished &&
                 <div className="w-full min-h-screen absolute top-0 left-0 bg-black/50 z-20"></div>
             }
+            {/* {
+                navBlocker.state === "blocked" ? (
+                    <div>
+                        <p>If you leave now, you will have to restart a test.</p>
+                        <p>Are you sure you want to proceed?</p>
+                        <button onClick={() => navBlocker.proceed()}>
+                            Proceed
+                        </button>
+                        <button onClick={() => navBlocker.reset()}>
+                            Cancel
+                        </button>
+                    </div>
+                ) : null
+            } */}
         </GeneralLayout>
     )
 }
