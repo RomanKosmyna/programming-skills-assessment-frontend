@@ -1,4 +1,4 @@
-import SeparationLine from "../general/SeparationLine";
+import SeparationLine from "../General/SeparationLine";
 
 type Props = {
     text: string | undefined;

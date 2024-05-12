@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import SeparationLine from "@components/general/SeparationLine";
+import SeparationLine from "@components/General/SeparationLine";
 import { getTestCategoryImage } from "src/util/getTestCategoryImage";
 
 import { TestCategoryProps } from "../types";

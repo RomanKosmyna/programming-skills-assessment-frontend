@@ -1,8 +1,9 @@
 import { Link } from "react-router-dom";
 import Heading from "../../../components/Heading/Heading";
-import SkillTag from "../../../components/general/SkillTag";
+import SkillTag from "../../../components/General/SkillTag";
 
 import { TestByCategoryProps } from "../types";
+import SkillTagList from "@components/General/SkillTagList";
 
 export default function TestByCategoryItem(
     { testByCategory, handleMouseEnter, handleMouseLeave, isItemHovered }: TestByCategoryProps
@@ -25,9 +26,7 @@ export default function TestByCategoryItem(
                 </div>
                 <div className="mt-5">
                     <p className="font-medium">Tested skills</p>
-                    <ul className="flex flex-wrap gap-2 mt-1">
-                        {testedSkills.map((skill: string, index: number) => <SkillTag key={index} text={skill} />)}
-                    </ul>
+                    <SkillTagList testedSkills={testedSkills} />
                 </div>
             </Link>
         </li>

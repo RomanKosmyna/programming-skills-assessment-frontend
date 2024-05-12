@@ -2,7 +2,7 @@ export type TestByCategoryType = {
     testID: string,
     testCategoryID: string,
     testName: string,
-    testedSkills: [string],
+    testedSkills: string[],
     durationMinutes?: number
 };
 

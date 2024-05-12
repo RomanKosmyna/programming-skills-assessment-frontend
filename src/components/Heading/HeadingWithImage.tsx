@@ -1,4 +1,4 @@
-import SeparationLine from "@components/general/SeparationLine";
+import SeparationLine from "@components/General/SeparationLine";
 import { getTestCategoryNameAndImage } from "@features/testsByCategory/util/getTestCategoryNameAndImage";
 
 type Props = {

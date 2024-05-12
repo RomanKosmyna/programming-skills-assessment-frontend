@@ -3,7 +3,7 @@ import { useBlocker, useParams } from "react-router-dom";
 import GeneralLayout from "../../../components/Layout/GeneralLayout";
 import { useActiveTest } from "../api/getActiveTest";
 import TestDurationTimer from "./TestDurationTimer";
-import SeparationLine from "../../../components/general/SeparationLine";
+import SeparationLine from "../../../components/General/SeparationLine";
 import RenderTestInformation from "./RenderTestInformation";
 import { useAppDispatch, useAppSelector } from "../../../hooks";
 import { setGeneralTestInformation } from "../slices/testResultSlice";

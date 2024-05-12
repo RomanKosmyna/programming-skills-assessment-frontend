@@ -1,4 +1,4 @@
-import SkillTag from "../../../components/general/SkillTag";
+import SkillTag from "../../../components/General/SkillTag";
 
 type TestedSkillsProps = {
     testedSkills: [string];
