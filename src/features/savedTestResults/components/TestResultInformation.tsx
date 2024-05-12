@@ -4,10 +4,10 @@ import { useGetUserTestResultById } from "../api/getUserTestResultById"
 import GeneralLayout from "../../../components/Layout/GeneralLayout";
 import RequestError from "../../../components/Error/RequestError";
 import Heading from "../../../components/Heading/Heading";
-import { getTestCategory } from "../../../util";
 import TestResultQuestionsOverview from "./TestResultQuestionsOverview";
 import TestResultTimeInfo from "../../activeTest/components/TestResult/TestResultTimeInfo";
 import QuestionGeneralInformation from "../../activeTest/components/TestResult/QuestionGeneralInformation";
+import { getTestCategoryImage } from "src/util/getTestCategoryImage";
 
 export default function TestResultInformation() {
     const token = localStorage.getItem("token")!;
@@ -33,7 +33,7 @@ export default function TestResultInformation() {
         remainingDurationTimer
     } = data;
 
-    const testCategoryName = getTestCategory(testCategoryID);
+    const testCategoryName = getTestCategoryImage(testCategoryID);
     const totalDurationMinutes = totalDurationTimer / 60;
 
     return (

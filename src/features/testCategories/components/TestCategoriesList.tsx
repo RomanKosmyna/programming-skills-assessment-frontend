@@ -1,5 +1,5 @@
 import ListLayout from "@components/Layout/ListLayout";
-import TestCategory from "./TestCategory";
+import TestCategoryItem from "./TestCategoryItem";
 import PendingSpinner from "@components/Pending/PendingSpinner";
 import RequestError from "@components/Error/RequestError";
 import EmptyRequestData from "@components/EmptyData/EmptyRequestData";
@@ -33,7 +33,7 @@ export default function TestCategoriesList(
                     .slice()
                     .sort((a, b) => a.testCategoryName.localeCompare(b.testCategoryName))
                     .map((testCategory: TestCategoryType) => (
-                        <TestCategory
+                        <TestCategoryItem
                             key={testCategory.testCategoryID}
                             testCategory={testCategory}
                             isItemHovered={hoveredItemId == testCategory.testCategoryID}

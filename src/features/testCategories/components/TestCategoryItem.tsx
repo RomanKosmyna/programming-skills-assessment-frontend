@@ -1,11 +1,15 @@
 import { Link } from "react-router-dom";
 import SeparationLine from "@components/general/SeparationLine";
+import { getTestCategoryImage } from "src/util/getTestCategoryImage";
+
 import { TestCategoryProps } from "../types";
 
-export default function TestCategory(
+export default function TestCategoryItem(
     { testCategory, handleMouseEnter, handleMouseLeave, isItemHovered }: TestCategoryProps
 ) {
     const { testCategoryID, testCategoryName } = testCategory;
+
+    const categoryImage = getTestCategoryImage(testCategoryID);
 
     return (
         <li
@@ -14,9 +18,16 @@ export default function TestCategory(
             onMouseEnter={handleMouseEnter}
             onMouseLeave={handleMouseLeave}
         >
-            <Link to={`/test-categories/${testCategoryID}`} className="block w-full h-[250px] flex-grow p-6">
+            <Link to={`/test-categories/${testCategoryID}`} className="flex w-full h-[250px] flex-col flex-grow p-6">
                 <h3 className="font-bold text-black text-[45px] ml-5">{testCategoryName}</h3>
                 <SeparationLine />
+                <div className="w-full">
+                    <img
+                        src={categoryImage}
+                        alt={`image of programming language ${testCategoryName}`}
+                        className="ml-5 h-[110px]"
+                    />
+                </div>
             </Link>
         </li>
     )

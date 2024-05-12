@@ -1,1 +1,1 @@
-export * from "./getTestCategory";
+export * from "./getTestCategoryImage";
