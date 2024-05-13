@@ -9,6 +9,9 @@ type Props = {
 export default function HeadingWithImage({ testCategoryId, headingText = "Tests" }: Props) {
     const { testCategoryName, testCategoryImage } = getTestCategoryNameAndImage(testCategoryId);
 
+    if (testCategoryId === "" || testCategoryId === undefined ||
+        testCategoryName === "" || testCategoryName === undefined) return null;
+
     return (
         <div className="w-full pt-3">
             <div className="w-full flex items-center">

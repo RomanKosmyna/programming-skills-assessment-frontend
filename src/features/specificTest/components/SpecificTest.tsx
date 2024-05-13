@@ -1,4 +1,4 @@
-import { Dispatch, SetStateAction } from "react";
+import { Dispatch, SetStateAction, useEffect } from "react";
 import PendingSpinner from "@components/Pending/PendingSpinner";
 import RequestError from "@components/Error/RequestError";
 import EmptyRequestData from "@components/EmptyData/EmptyRequestData";
@@ -15,15 +15,19 @@ type Props = {
 export default function SpecificTest({ setTestCategoryId, specificTestId }: Props) {
     const { isPending, isError, data, error } = useSpecificTest(specificTestId);
 
+    useEffect(() => {
+        if (data !== undefined) {
+            setTestCategoryId(data.testCategoryID);
+        }
+    }, [data, setTestCategoryId]);
+
     if (isPending) return <PendingSpinner />
 
     if (isError) return <RequestError errorMessage={error?.message} />
 
     if (data === undefined) return <EmptyRequestData message="Such test was not found" />
 
-    const { testID, testCategoryID, testName, description, testedSkills, durationMinutes } = data;
-
-    setTestCategoryId(testCategoryID);
+    const { testID, testName, description, testedSkills, durationMinutes } = data;
 
     return (
         <div className="w-full mt-4 p-7 flex-grow">
