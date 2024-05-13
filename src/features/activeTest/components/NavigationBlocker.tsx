@@ -1,11 +1,23 @@
-import { Blocker } from "react-router-dom";
+import { useBlocker } from "react-router-dom";
+import { useAppDispatch, useAppSelector } from "src/hooks";
+import { clearQuestionStatus } from "../slices/activeTestQuestionNavigationSlice";
+import { clearQuestions } from "../slices/activeTestQuestionAnswerOptionSlice";
 
-type Props = {
-    navBlocker: Blocker;
-};
+export default function NavigationBlocker() {
+    const isTestFinished = useAppSelector(state => state.testResult.isTestFinished);
+    const dispatch = useAppDispatch();
 
-export default function NavigationBlocker({ navBlocker }: Props) {
-    if (navBlocker === undefined) return null;
+    const navBlocker = useBlocker(
+        ({ currentLocation, nextLocation }) =>
+            !isTestFinished &&
+            currentLocation.pathname !== nextLocation.pathname
+    );
+
+    const proceed = () => {
+        dispatch(clearQuestionStatus());
+        dispatch(clearQuestions());
+        navBlocker.proceed();
+    };
 
     return (
         <>
@@ -17,7 +29,7 @@ export default function NavigationBlocker({ navBlocker }: Props) {
                             <p className="font-medium mt-2">Are you sure you want to proceed?</p>
                             <div className="mt-5 flex justify-center gap-4">
                                 <button
-                                onClick={() => navBlocker.proceed()}
+                                onClick={() => proceed()}
                                 className="px-6 py-2 bg-red-400 text-main font-medium rounded-md"
                                 >
                                     Proceed
