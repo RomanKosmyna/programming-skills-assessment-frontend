@@ -6,7 +6,7 @@ type TestDescriptionProps = {
 
 export default function SpecificTestDescription({ description }: TestDescriptionProps) {
     return (
-        <section className="max-w-[400px] text-justify text-wrap">
+        <section>
             <div className="flex items-center gap-2">
                 <InfoOutlineIcon w={5} h={5} />
                 <h4 className="font-bold text-[22px]">Description</h4>
