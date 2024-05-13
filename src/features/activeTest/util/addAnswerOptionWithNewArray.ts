@@ -1,4 +1,4 @@
-import { addAnswerOptionWithNewArray as addAnswerOptionWithArray } from "../slices/activeTestSlice";
+import { addAnswerOptionWithNewArray as addAnswerOptionWithArray } from "../slices/activeTestQuestionAnswerOptionSlice";
 import { AnswerOptionType } from "../types";
 
 export const addAnswerOptionWithNewArray =

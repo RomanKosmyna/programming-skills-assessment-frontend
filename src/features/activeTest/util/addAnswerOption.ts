@@ -1,4 +1,4 @@
-import { addAnswer } from "../slices/activeTestSlice";
+import { addAnswer } from "../slices/activeTestQuestionAnswerOptionSlice";
 import { AnswerOptionType } from "../types";
 
 export const addAnswerOption =

@@ -10,7 +10,7 @@ type UnansweredQuestionsWarningModalProps = {
 
 export default function UnansweredQuestionsWarningModal(
     { isActive, setIsActive, testID }: UnansweredQuestionsWarningModalProps) {
-    const state = useAppSelector(state => state.activeTest.questions);
+    const state = useAppSelector(state => state.activeTestQuestionAnswerOption.questions);
     const dispatch = useAppDispatch();
 
     const finishTestAndSendData = async () => {

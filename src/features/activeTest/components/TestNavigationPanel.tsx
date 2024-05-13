@@ -1,17 +1,17 @@
 import { useState } from "react";
-
-import { useAppDispatch, useAppSelector } from "../../../hooks"
 import UnansweredQuestionsWarningModal from "./UnansweredQuestionsWarningModal";
 import { formTestResult } from "../api/formTestResult";
+
+import { useAppDispatch, useAppSelector } from "src/hooks";
 import { finishTest, setResult } from "../slices/testResultSlice";
 
-type TestNavigationPanelProps = {
+type Props = {
     testID: string;
     numberOfQuestions: number;
 };
 
-export default function TestNavigationPanel({ testID, numberOfQuestions }: TestNavigationPanelProps) {
-    const state = useAppSelector(state => state.activeTest.questions);
+export default function TestNavigationPanel({ testID, numberOfQuestions }: Props) {
+    const state = useAppSelector(state => state.activeTestQuestionAnswerOption.questions);
     const dispatch = useAppDispatch();
 
     const numberOfQuestionsAnswered = state.length;

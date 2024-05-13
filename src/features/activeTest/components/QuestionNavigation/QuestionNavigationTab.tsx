@@ -1,13 +1,14 @@
 import { Tab } from "@chakra-ui/react";
-import { useAppDispatch, useAppSelector } from "../../../hooks";
 import { useEffect } from "react";
-import { setQuestionStatus } from "../slices/activeTestSlice";
+import { setQuestionStatus } from "../../slices/activeTestQuestionNavigationSlice";
 
-type QuestionNavigationTabProps = {
+import { useAppDispatch, useAppSelector } from "src/hooks";
+
+type Props = {
     index: number;
 };
 
-export default function QuestionNavigationTab({ index }: QuestionNavigationTabProps) {
+export default function QuestionNavigationTab({ index }: Props) {
     const dispatch = useAppDispatch();
 
     const activeQuestionPayload = {
@@ -15,7 +16,7 @@ export default function QuestionNavigationTab({ index }: QuestionNavigationTabPr
         isOptionChosen: false
     };
 
-    const state = useAppSelector(state => state.activeTest.questionsStatus);
+    const state = useAppSelector(state => state.activeTestQuestionNavigation.questionsStatus);
 
     const questionStatus = state[index - 1];
 

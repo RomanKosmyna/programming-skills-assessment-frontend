@@ -2,7 +2,7 @@ import { useQuery } from "@tanstack/react-query";
 import { API_URL, URLS } from "../../../config";
 import { ExpectedTestResultType, TestResultType } from "../types";
 
-export const formTestResult = async (activeTestId: string, requestBody: TestResultType[]): Promise<ExpectedTestResultType[]> => {
+export const formTestResult = async (activeTestId: string | undefined, requestBody: TestResultType[]): Promise<ExpectedTestResultType[]> => {
     const response = await fetch(API_URL + URLS.testResult.formTestResult(activeTestId), {
         method: "POST",
         headers: {
@@ -18,7 +18,7 @@ export const formTestResult = async (activeTestId: string, requestBody: TestResu
     return response.json();
 };
 
-export const useFormTestResult = (activeTestId: string, requestBody: [TestResultType]) => {
+export const useFormTestResult = (activeTestId: string | undefined, requestBody: [TestResultType]) => {
     return useQuery({
         queryKey: ['formTestResult', activeTestId],
         queryFn: () => formTestResult(activeTestId, requestBody),

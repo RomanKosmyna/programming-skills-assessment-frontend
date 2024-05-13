@@ -2,7 +2,6 @@ import { PayloadAction, createSlice } from "@reduxjs/toolkit"
 
 interface ActiveTestState {
     questions: QuestionState[];
-    questionsStatus: QuestionStatusState[]
 }
 
 interface QuestionState {
@@ -15,18 +14,12 @@ interface OptionState {
     optionNumber: number;
 }
 
-interface QuestionStatusState {
-    questionNumber: number;
-    isOptionChosen: boolean;
-}
-
 const initialState: ActiveTestState = {
-    questions: [],
-    questionsStatus: []
+    questions: []
 }
 
-export const activeTestSlice = createSlice({
-    name: "activeTest",
+export const activeTestQuestionAnswerOptionSlice = createSlice({
+    name: "activeTestQuestionAnswerOptionSlice",
     initialState,
     reducers: {
         addAnswerOptionWithNewArray: (state, action: PayloadAction<QuestionState>) => {
@@ -60,24 +53,6 @@ export const activeTestSlice = createSlice({
         },
         clearQuestions: (state) => {
             state.questions = []
-        },
-        setQuestionStatus: (state, action: PayloadAction<QuestionStatusState>) => {
-            const { questionNumber } = action.payload;
-            const questionStatusIndex = state.questionsStatus.findIndex(questionsStatus => questionsStatus.questionNumber === questionNumber);
-
-            if (questionStatusIndex === -1) {
-                state.questionsStatus.push(action.payload);
-            }
-        },
-        activeQuestionStatus: (state, action: PayloadAction<QuestionStatusState>) => {
-            const { questionNumber } = action.payload;
-
-            const questionStatusIndex = state.questionsStatus.findIndex(questionsStatus => questionsStatus.questionNumber === questionNumber);
-
-            state.questionsStatus[questionStatusIndex] = action.payload;
-        },
-        clearQuestionStatus: (state) => {
-            state.questionsStatus = []
         }
     }
 });
@@ -87,8 +62,5 @@ export const {
     addAnswer,
     removeAnswer,
     clearQuestions,
-    setQuestionStatus,
-    activeQuestionStatus,
-    clearQuestionStatus
-} = activeTestSlice.actions;
-export default activeTestSlice.reducer;
+} = activeTestQuestionAnswerOptionSlice.actions;
+export default activeTestQuestionAnswerOptionSlice.reducer;

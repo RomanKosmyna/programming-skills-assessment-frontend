@@ -1,4 +1,4 @@
-import { removeAnswer } from "../slices/activeTestSlice";
+import { removeAnswer } from "../slices/activeTestQuestionAnswerOptionSlice";
 import { AnswerOptionType } from "../types";
 
 export const removeAnswerOption =

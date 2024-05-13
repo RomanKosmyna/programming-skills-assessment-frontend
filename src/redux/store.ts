@@ -1,13 +1,17 @@
 import { configureStore } from '@reduxjs/toolkit'
-import activeTestReducer from "../features/activeTest/slices/activeTestSlice";
-import activeInstructionStepReducer from "../features/home/slices/activeInstructionStepSlice";
-import testResultReducer from "../features/activeTest/slices/testResultSlice";
+import activeTestQuestionAnswerOptionReducer from "@features/activeTest/slices/activeTestQuestionAnswerOptionSlice";
+import activeInstructionStepReducer from "@features/home/slices/activeInstructionStepSlice";
+import testResultReducer from "@features/activeTest/slices/testResultSlice";
+import activeTestTimerReducer from "@features/activeTest/slices/activeTestTimerSlice";
+import activeTestQuestionNavigationReducer from "@features/activeTest/slices/activeTestQuestionNavigationSlice";
 
 export const store = configureStore({
   reducer: {
-    activeTest: activeTestReducer,
     activeInstructionStep: activeInstructionStepReducer,
-    testResult: testResultReducer
+    activeTestTimer: activeTestTimerReducer,
+    activeTestQuestionAnswerOption: activeTestQuestionAnswerOptionReducer,
+    activeTestQuestionNavigation: activeTestQuestionNavigationReducer,
+    testResult: testResultReducer,
   },
 })
 

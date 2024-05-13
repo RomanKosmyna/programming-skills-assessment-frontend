@@ -1,64 +1,74 @@
 import { useEffect, useState } from "react";
-import { useAppDispatch, useAppSelector } from "../../../hooks";
-import { finishTest, setRemainingDurationTimer, setResult, setTotalDurationTimer } from "../slices/testResultSlice";
-import { formTestResult } from "../api/formTestResult";
 
 type TestDurationTimerProps = {
-    testID: string;
-    durationMinutes?: number;
+    testID: string | undefined;
+    initialDurationTime: number | undefined;
 };
 
-export default function TestDurationTimer({ testID, durationMinutes }: TestDurationTimerProps) {
-    const totalSeconds = durationMinutes! * 60;
+export default function TestDurationTimer({ testID, initialDurationTime }: TestDurationTimerProps) {
+    const totalSeconds = initialDurationTime! * 60;
     const [remainingSeconds, setRemainingSeconds] = useState(totalSeconds);
-    const { isTestFinished } = useAppSelector(state => state.testResult);
-    const dispatch = useAppDispatch();
-    const state = useAppSelector(state => state.activeTest.questions);
-    const [isTimeOut, setIsTimeOut] = useState(false);
 
     useEffect(() => {
-        if (!isTestFinished) {
-            dispatch(setTotalDurationTimer(totalSeconds!));
+        const interval = setInterval(() => {
+            setRemainingSeconds(prevState => {
+                if (prevState > 0) {
+                    return prevState - 1;
+                } else {
+                    clearInterval(interval);
+                    return 0;
+                }
+            });
+        }, 1000);
 
-            const interval = setInterval(() => {
-                setRemainingSeconds((prevState) => {
-                    if (prevState > 0) {
-                        return prevState - 1;
-                    } else {
-                        setIsTimeOut(true);
-                        clearInterval(interval);
-                        return 0;
-                    }
-                });
-            }, 1000);
+        return () => clearInterval(interval);
+    }, [totalSeconds]);
+    // const { isTestFinished } = useAppSelector(state => state.testResult);
+    // const [isTimeOut, setIsTimeOut] = useState(false);
 
-            if (isTestFinished) {
-                dispatch(setRemainingDurationTimer(remainingSeconds));
-                clearInterval(interval);
-            }
+    // useEffect(() => {
+    //     if (!isTestFinished) {
+    //         dispatch(setTotalDurationTimer(totalSeconds!));
 
-            return () => clearInterval(interval);
-        }
-        else {
-            dispatch(setRemainingDurationTimer(remainingSeconds));
-        }
-    }, [isTestFinished]);
+    // const interval = setInterval(() => {
+    //     setRemainingSeconds((prevState) => {
+    //         if (prevState > 0) {
+    //             return prevState - 1;
+    //         } else {
+    //             setIsTimeOut(true);
+    //             clearInterval(interval);
+    //             return 0;
+    //         }
+    //     });
+    // }, 1000);
 
-    useEffect(() => {
-        if (isTimeOut) {
-            handleTestCompletion();
-            setIsTimeOut(false);
-        }
-    }, [isTimeOut]);
+    //         if (isTestFinished) {
+    //             dispatch(setRemainingDurationTimer(remainingSeconds));
+    //             clearInterval(interval);
+    //         }
 
-    const handleTestCompletion = async () => {
-        dispatch(setRemainingDurationTimer(remainingSeconds));
-        const result = await formTestResult(testID, state);
-        dispatch(setResult(result));
-        dispatch(finishTest(true));
-    };
+    //         return () => clearInterval(interval);
+    //     }
+    //     else {
+    //         dispatch(setRemainingDurationTimer(remainingSeconds));
+    //     }
+    // }, [isTestFinished]);
 
-    if (isTestFinished) return null;
+    // useEffect(() => {
+    //     if (isTimeOut) {
+    //         handleTestCompletion();
+    //         setIsTimeOut(false);
+    //     }
+    // }, [isTimeOut]);
+
+    // const handleTestCompletion = async () => {
+    //     dispatch(setRemainingDurationTimer(remainingSeconds));
+    //     const result = await formTestResult(testID, state);
+    //     dispatch(setResult(result));
+    //     dispatch(finishTest(true));
+    // };
+
+    // if (isTestFinished) return null;
 
     const minutes = Math.floor(remainingSeconds / 60);
     const seconds = remainingSeconds % 60;

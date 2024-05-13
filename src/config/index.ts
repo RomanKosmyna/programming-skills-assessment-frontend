@@ -18,11 +18,11 @@ export const URLS = {
     testsByCategory: {
         getAll: `${tests}/getAllTests`,
         getById: (testId: string | undefined) => `${tests}/gettestbyid/${testId}`,
-        getByIdWithRelatedTables: (testId: string) => `${tests}/GetTestByIdWithRelatedTables/${testId}`,
+        getByIdWithRelatedTables: (testId: string | undefined) => `${tests}/gettestbyidwithrelatedtables/${testId}`,
         getByTestCategoryId: (testTypeId: string | undefined) => `${tests}/gettestsbytestcategoryid/${testTypeId}`
     },
     testResult: {
-        formTestResult: (testId: string) => `${testResult}/formtestresult/${testId}`
+        formTestResult: (testId: string | undefined) => `${testResult}/formtestresult/${testId}`
     },
     userTestResult: {
         saveUserTestResult: `${userTestResult}/savetestresult`,

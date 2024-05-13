@@ -1,10 +1,11 @@
 import { useNavigate } from "react-router-dom";
 import { useAppDispatch, useAppSelector } from "../../../../hooks";
 import { resetTest } from "../../slices/testResultSlice";
-import { clearQuestionStatus, clearQuestions } from "../../slices/activeTestSlice";
 import { API_URL, URLS } from "../../../../config";
 import { useToast } from "@chakra-ui/react";
 import { useAuth } from "../../../../providers/useAuth";
+import { clearQuestionStatus } from "@features/activeTest/slices/activeTestQuestionNavigationSlice";
+import { clearQuestions } from "@features/activeTest/slices/activeTestQuestionAnswerOptionSlice";
 
 export default function TestResultNavigation() {
     const { isLoggedIn } = useAuth();
