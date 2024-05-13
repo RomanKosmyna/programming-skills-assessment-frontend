@@ -1,56 +1,49 @@
-import { Link, useParams } from "react-router-dom";
-import Heading from "../../../components/Heading/Heading";
+import { Dispatch, SetStateAction } from "react";
+import { Link } from "react-router-dom";
+import PendingSpinner from "@components/Pending/PendingSpinner";
+import RequestError from "@components/Error/RequestError";
+import EmptyRequestData from "@components/EmptyData/EmptyRequestData";
+import TestedSkills from "./SpecificTestTestedSkills";
+import TestDuration from "./SpecificTestDuration";
+import SpecificTestDescription from "./SpecificTestDescription";
 
 import { useSpecificTest } from "../api/getSpecificTest";
-import TestedSkills from "./TestedSkills";
-import TestDuration from "./TestDuration";
-import TestDescription from "./TestDescription";
-import GeneralLayout from "../../../components/Layout/GeneralLayout";
+import SpecificTestInformationPanel from "./SpecificTestInformationPanel";
 
-export default function SpecificTest() {
-    const { specificTestId } = useParams();
+type Props = {
+    setTestCategoryId: Dispatch<SetStateAction<string>>;
+    specificTestId: string | undefined;
+};
 
-    if (specificTestId == undefined) {
-        return;
-    }
-
+export default function SpecificTest({ setTestCategoryId, specificTestId }: Props) {
     const { isPending, isError, data, error } = useSpecificTest(specificTestId);
 
-    if (isPending) return <div>Loading...</div>
+    if (isPending) return <PendingSpinner />
 
-    if (isError) return <div>{error.message}</div>
+    if (isError) return <RequestError errorMessage={error?.message} />
 
-    if (!data) return <div><h4>No test was found</h4></div>
+    if (data === undefined) return <EmptyRequestData message="Such test was not found" />
 
-    const testByCategory = () => {
-        if (data.testCategoryID == "a3f64587-39a1-41da-788e-08dc6ceef5d5") {
-            return ".NET/C#"
-        }
-    };
+    const { testID, testCategoryID, testName, description, testedSkills, durationMinutes } = data;
 
-    const headingName = testByCategory();
+    setTestCategoryId(testCategoryID);
 
     return (
-        <GeneralLayout>
-            <div className="p-4">
-                <Heading text={headingName} />
-                <div className="mt-8">
-                    <h3 className="font-bold text-[40px]">{data.testName}</h3>
-                    <div className="flex mt-8 gap-20">
-                        <TestDescription description={data.description} />
-                        <TestedSkills testedSkills={data.testedSkills} />
-                        <TestDuration durationMinutes={data.durationMinutes} />
-                    </div>
-                    <div className="mt-8">
-                        <Link
-                            to={`/test/active/${data.testID}`}
-                            className="mr-auto bg-lime-500 px-7 py-2 font-medium text-white rounded-md"
-                        >
-                            Start
-                        </Link>
-                    </div>
-                </div>
+        <div className="w-full mt-8 p-5 flex-grow">
+            <h3 className="font-bold text-[40px]">{testName}</h3>
+            <SpecificTestInformationPanel
+                description={description}
+                testedSkills={testedSkills}
+                durationMinutes={durationMinutes}
+            />
+            <div className="mt-8">
+                <Link
+                    to={`/test/active/${testID}`}
+                    className="mr-auto bg-[#41B06E] px-7 py-2 font-medium text-white rounded-md"
+                >
+                    Start
+                </Link>
             </div>
-        </GeneralLayout>
+        </div>
     )
 }

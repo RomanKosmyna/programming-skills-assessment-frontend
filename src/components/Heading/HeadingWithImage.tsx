@@ -3,15 +3,16 @@ import { getTestCategoryNameAndImage } from "@features/testsByCategory/util/getT
 
 type Props = {
     testCategoryId: string | undefined;
+    headingText?: string;
 };
 
-export default function HeadingWithImage({ testCategoryId }: Props) {
+export default function HeadingWithImage({ testCategoryId, headingText = "Tests" }: Props) {
     const { testCategoryName, testCategoryImage } = getTestCategoryNameAndImage(testCategoryId);
 
     return (
         <div className="w-full pt-3">
             <div className="w-full flex items-center">
-                <h2 className="font-bold text-[36px]">{`${testCategoryName} Tests`}</h2>
+                <h2 className="font-bold text-[36px]">{`${testCategoryName} ${headingText}`}</h2>
                 <img
                     src={testCategoryImage}
                     alt={`${testCategoryName} programming language logo`}

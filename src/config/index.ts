@@ -17,7 +17,7 @@ export const URLS = {
     },
     testsByCategory: {
         getAll: `${tests}/getAllTests`,
-        getById: (testId: string) => `${tests}/GetTestById/${testId}`,
+        getById: (testId: string | undefined) => `${tests}/gettestbyid/${testId}`,
         getByIdWithRelatedTables: (testId: string) => `${tests}/GetTestByIdWithRelatedTables/${testId}`,
         getByTestCategoryId: (testTypeId: string | undefined) => `${tests}/gettestsbytestcategoryid/${testTypeId}`
     },

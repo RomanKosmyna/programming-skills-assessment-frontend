@@ -1,4 +1,4 @@
-export type SpecificTest = {
+export type SpecificTestType = {
     testID: string,
     testCategoryID: string,
     testName: string,
@@ -8,5 +8,5 @@ export type SpecificTest = {
 };
 
 export type SpecificTestProps = {
-    specificTest: SpecificTest
+    specificTest: SpecificTestType
 }
