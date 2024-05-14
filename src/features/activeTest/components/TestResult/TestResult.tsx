@@ -9,7 +9,7 @@ export default function TestResult() {
     const { result, totalDurationTimer, remainingDurationTimer } = useAppSelector(state => state.testResult);
 
     return (
-        <div className="w-full mt-10 flex flex-col">
+        <div className="w-full bg-main mt-10 flex flex-col z-40">
             <div className="w-full flex justify-start">
                 <h3 className="font-bold text-[36px]">Test Result</h3>
             </div>

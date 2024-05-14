@@ -2,7 +2,7 @@ import { createBrowserRouter } from "react-router-dom";
 import App from "../App";
 import AuthLayout from "../features/auth/components/AuthLayout";
 import MainLayout from "../layouts/Main/MainLayout";
-import Home from "../features/home/components/Home";
+import HomePage from "../features/home/components/HomePage";
 import LoginForm from "../features/auth/components/LoginForm";
 import RegisterForm from "../features/auth/components/RegisterForm";
 import ProtectectedRoute from "./ProtectedRoute";
@@ -24,7 +24,7 @@ export const router = createBrowserRouter([
                 children: [
                     {
                         path: "/",
-                        element: <Home />
+                        element: <HomePage />
                     },
                     {
                         path: "test-categories",

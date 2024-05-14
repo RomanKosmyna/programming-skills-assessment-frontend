@@ -4,34 +4,24 @@ import PaddingLayout from "@components/Layout/PaddingLayout";
 import ActiveTestHeadingWithTimer from "./ActiveTestHeadingWithTimer";
 import ActiveTestInformation from "./ActiveTestInformation";
 import NavigationBlocker from "../NavigationBlocker";
+
 import { useAppSelector } from "src/hooks";
+import ActiveWindow from "@components/Elements/Windows/ActiveWindow";
 
 export default function ActiveTestPage() {
     const { activeTestId } = useParams();
-    // const [value, setValue] = useState(false);
     const isTestFinished = useAppSelector(state => state.testResult.isTestFinished);
-
-    // const navBlocker = useBlocker(
-    //     ({ currentLocation, nextLocation }) =>
-    //         !isTestFinished &&
-    //         currentLocation.pathname !== nextLocation.pathname
-    // );
-
-    // if (isTestFinished) {
-    //     dispatch(setGeneralTestInformation({ testCategoryID, testID, testName }));
-    //     setValue(true);
-    // }
 
     return (
         <GeneralLayout>
             <PaddingLayout>
-                <ActiveTestHeadingWithTimer />
-                <ActiveTestInformation activeTestId={activeTestId} />
+                <div className={`${isTestFinished ? "z-40 bg-main p-4 rounded-lg" : ""}`}>
+                    <ActiveTestHeadingWithTimer />
+                    <ActiveTestInformation activeTestId={activeTestId} />
+                </div>
             </PaddingLayout>
             <NavigationBlocker />
-            {isTestFinished &&
-                <div className="w-full min-h-screen absolute top-0 left-0 bg-black/50 z-20"></div>
-            }
+            {isTestFinished && <ActiveWindow />}
         </GeneralLayout>
     )
 }

@@ -21,8 +21,6 @@ export default function TestResultInformation() {
 
     if (isError) return <RequestError errorMessage={error?.message} />
 
-    console.log(data);
-
     const {
         testCategoryID,
         testName,

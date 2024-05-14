@@ -6,6 +6,7 @@ import { setInitialTimerData } from "../../slices/activeTestTimerSlice";
 import TestNavigationPanel from "../TestNavigationPanel";
 import TestResult from "../TestResult/TestResult";
 import InformationDisplay from "./InformationDisplay";
+import { setGeneralTestInformation } from "@features/activeTest/slices/testResultSlice";
 
 import { useActiveTest } from "../../api/getActiveTest";
 
@@ -27,6 +28,11 @@ export default function ActiveTestInformation({ activeTestId }: Props) {
                 testName: data.testName,
                 durationMinutes: data.durationMinutes
             }));
+            dispatch(setGeneralTestInformation({
+                testID: data.testID,
+                testName: data.testName,
+                testCategoryID: data.testCategoryID
+            }));
         }
     }, [data, dispatch]);
 
@@ -40,7 +46,7 @@ export default function ActiveTestInformation({ activeTestId }: Props) {
     const numberOfQuestions = questions.length;
 
     return (
-        <div>
+        <>
             {isTestFinished ? (
                 <TestResult />
             ) : (
@@ -52,6 +58,6 @@ export default function ActiveTestInformation({ activeTestId }: Props) {
                     />
                 </>
             )}
-        </div>
+        </>
     )
 }

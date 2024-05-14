@@ -1,9 +1,10 @@
 import { useState } from "react";
 import UnansweredQuestionsWarningModal from "./UnansweredQuestionsWarningModal";
+import { finishTest, setResult } from "../slices/testResultSlice";
+
 import { formTestResult } from "../api/formTestResult";
 
 import { useAppDispatch, useAppSelector } from "src/hooks";
-import { finishTest, setResult } from "../slices/testResultSlice";
 
 type Props = {
     testID: string;
@@ -17,6 +18,7 @@ export default function TestNavigationPanel({ testID, numberOfQuestions }: Props
     const numberOfQuestionsAnswered = state.length;
 
     const [isActive, setIsActive] = useState(false);
+
     const finishTestAndSendData = async () => {
         if (numberOfQuestions !== numberOfQuestionsAnswered) {
             setIsActive(true);
@@ -24,7 +26,6 @@ export default function TestNavigationPanel({ testID, numberOfQuestions }: Props
         else {
             try {
                 const result = await formTestResult(testID, state);
-                console.log(state);
                 
                 dispatch(setResult(result));
                 dispatch(finishTest(true));

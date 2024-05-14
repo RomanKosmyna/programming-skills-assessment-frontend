@@ -1,5 +1,6 @@
 import { Link, NavLink } from "react-router-dom";
 import { useAuth } from "../../providers/useAuth";
+import ThemeChange from "@components/Theme/ThemeChange";
 
 export default function Header() {
     const { isLoggedIn, logout } = useAuth();
@@ -7,10 +8,11 @@ export default function Header() {
     const { userName } = JSON.parse(user!) ?? {};
 
     return (
-        <header className="w-full h-[64px] bg-[#fff] px-6 flex justify-center shadow-light fixed z-20">
+        <header className="w-full h-[64px] bg-mainWhite dark:bg-darkAccent1 
+        px-6 flex justify-center shadow-light dark:shadow-dark fixed z-20">
             <div className="w-full min-h-full max-w-[1400px] flex items-center">
                 <div>
-                    <h1 className="font-medium text-[24px] mr-6">Programming skills assessment</h1>
+                    <h1 className="font-medium text-[24px] mr-6 dark:text-mainWhite">Programming skills assessment</h1>
                 </div>
                 <nav className="flex justify-between flex-grow">
                     <div className="ml-8">
@@ -45,15 +47,23 @@ export default function Header() {
                             ) : null}
                         </ul>
                     </div>
-                    {isLoggedIn() ? (
-                        <div>
-                            <button onClick={logout}>Log Out</button>
-                        </div>
-                    ) : (
-                        <div>
+                    <div>
+                        <ThemeChange />
+                    </div>
+                    <div>
+                        {isLoggedIn() ? (
+                            <button
+                                onClick={logout}
+                                className="bg-mainWhite dark:bg-[#191919] border dark:border-darkButtonBorder 
+                                dark:text-mainWhite rounded-md px-4 py-1 transition-opacity
+                                hover:dark:opacity-90"
+                            >
+                                Log Out
+                            </button>
+                        ) : (
                             <Link to={"/auth/login"}>Sign in</Link>
-                        </div>
-                    )}
+                        )}
+                    </div>
                 </nav>
             </div>
         </header>

@@ -6,7 +6,7 @@ import { changeStepperStatus } from "../slices/activeInstructionStepSlice";
 import Instruction from "./Instruction";
 import InstructionDisplayButton from "./InstructionDisplayButton";
 
-export default function Home() {
+export default function HomePage() {
     const { isStepperActive } = useAppSelector(state => state.activeInstructionStep);
     const dispatch = useAppDispatch();
     const instructionDisplay = localStorage.getItem("instructionDisplay");

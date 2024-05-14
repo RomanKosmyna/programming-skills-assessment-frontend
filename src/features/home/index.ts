@@ -1,2 +1,2 @@
-export * from "./components/Home";
+export * from "./components/HomePage";
 export * from "./slices/activeInstructionStepSlice";

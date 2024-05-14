@@ -4,10 +4,14 @@ export default {
     "./index.html",
     "./src/**/*.{js,ts,jsx,tsx}",
   ],
+  darkMode: "class",
   theme: {
     extend: {
       colors: {
-        main: "#FFF",
+        mainWhite: "#FFF",
+        mainDark: "#0a0a0a",
+        darkButtonBorder: "#5f5f5f",
+        darkAccent1: "#1b1b1b",
         accent1: "#fafafa",
         accentBlue: "#7AA2E3",
         accentGray1: "#666",
@@ -20,6 +24,7 @@ export default {
       },
       boxShadow: {
         light: "inset 0 -1px 0 0 #eaeaea",
+        dark: "inset 0 -1px hsla(0,0%,100%,.14)",
         borderLight: "inset 0 0 0 1px #eaeaea",
         instructionCards: "inset 0 0 10px 1px #eaeaea",
         authForm: "0 0 10px rgb(0 0 0 / 0.1)"

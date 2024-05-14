@@ -56,6 +56,7 @@ export default function TestResultNavigation() {
             completionHour: completionHour,
             completionDate: completionDate
         };
+        console.log(testResultData);
 
         const saveTestResult = await fetch(API_URL + URLS.userTestResult.saveUserTestResult, {
             method: "POST",
