@@ -1,11 +1,12 @@
 import { useNavigate } from "react-router-dom";
-import { useAppDispatch, useAppSelector } from "../../../../hooks";
-import { resetTest } from "../../slices/testResultSlice";
-import { API_URL, URLS } from "../../../../config";
 import { useToast } from "@chakra-ui/react";
-import { useAuth } from "../../../../providers/useAuth";
+import { useAuth } from "src/providers/useAuth";
+import { API_URL, URLS } from "@config/index";
 import { clearQuestionStatus } from "@features/activeTest/slices/activeTestQuestionNavigationSlice";
 import { clearQuestions } from "@features/activeTest/slices/activeTestQuestionAnswerOptionSlice";
+import { resetTest } from "@features/activeTest/slices/testResultSlice";
+
+import { useAppDispatch, useAppSelector } from "src/hooks";
 
 export default function TestResultNavigation() {
     const { isLoggedIn } = useAuth();
@@ -56,7 +57,6 @@ export default function TestResultNavigation() {
             completionHour: completionHour,
             completionDate: completionDate
         };
-        console.log(testResultData);
 
         const saveTestResult = await fetch(API_URL + URLS.userTestResult.saveUserTestResult, {
             method: "POST",
@@ -66,8 +66,12 @@ export default function TestResultNavigation() {
             },
             body: JSON.stringify(testResultData)
         });
+        
         if (saveTestResult.ok) {
             toast({
+                containerStyle: {
+                    backgroundColor: "15803D"
+                },
                 title: 'Test results are saved.',
                 description: "Test results are successfully saved.",
                 status: 'success',
@@ -78,6 +82,9 @@ export default function TestResultNavigation() {
         }
         else {
             toast({
+                containerStyle: {
+                    backgroundColor: "B91C1C"
+                },
                 title: 'Something went wrong.',
                 description: "Something went wrong. Please try again.",
                 status: 'error',
@@ -89,23 +96,27 @@ export default function TestResultNavigation() {
 
     return (
         <div className="mt-10 flex justify-center">
-            <nav className="bg-accent1 shadow-borderLight flex gap-10 p-3 rounded-lg">
+            <nav className="bg-mainWhite dark:bg-darkAccent1 shadow-borderLight dark:shadow-none 
+            dark:border dark:border-darkBorder flex gap-10 p-3 rounded-lg">
                 <button
                     onClick={() => handleTestResultState("/test-categories")}
-                    className="bg-accentBlue font-bold text-main px-4 py-2 rounded-md transition-colors hover:bg-hoverAccentBlue"
+                    className="bg-green-700 px-6 py-2 font-bold text-xl 
+                    text-mainWhite flex justify-center rounded-lg transition-opacity hover:opacity-90"
                 >
                     Close Test
                 </button>
                 {isLoggedIn() && (
                     <button
                         onClick={() => handleSaveTestResults()}
-                        className="bg-accentBlue font-bold text-main px-4 py-2 rounded-md transition-colors hover:bg-hoverAccentBlue"
+                        className="bg-green-700 px-6 py-2 font-bold text-xl 
+                    text-mainWhite flex justify-center rounded-lg transition-opacity hover:opacity-90"
                     >
                         Save Results
                     </button>
                 )}
                 <button
-                    className="bg-accentBlue font-bold text-main px-4 py-2 rounded-md transition-colors hover:bg-hoverAccentBlue"
+                    className="bg-green-700 px-6 py-2 font-bold text-xl 
+                    text-mainWhite flex justify-center rounded-lg transition-opacity hover:opacity-90"
                 >
                     Download results in PDF
                 </button>

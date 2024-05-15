@@ -1,4 +1,4 @@
-import { useAppSelector } from "../../../../hooks"
+import { useAppSelector } from "src/hooks";
 import CompletionDate from "./CompletionDate";
 import QuestionGeneralInformation from "./QuestionGeneralInformation";
 import QuestionsOverview from "./QuestionsOverview";
@@ -9,12 +9,13 @@ export default function TestResult() {
     const { result, totalDurationTimer, remainingDurationTimer } = useAppSelector(state => state.testResult);
 
     return (
-        <div className="w-full bg-main mt-10 flex flex-col z-40">
+        <div className="w-full mt-10 flex flex-col">
             <div className="w-full flex justify-start">
-                <h3 className="font-bold text-[36px]">Test Result</h3>
+                <h3 className="font-bold text-mainDark dark:text-darkHeading text-[36px]">Test Result</h3>
             </div>
             <div className="w-full flex justify-center mt-4">
-                <div className=" bg-accent1 shadow-borderLight p-3 rounded-lg gap-10 flex">
+                <div className=" bg-mainWhite dark:bg-darkAccent1 shadow-borderLight 
+                dark:shadow-none dark:border dark:border-darkBorder p-3 rounded-lg gap-10 flex">
                     <QuestionGeneralInformation result={result} />
                     <CompletionDate />
                     <TestResultTimeInfo

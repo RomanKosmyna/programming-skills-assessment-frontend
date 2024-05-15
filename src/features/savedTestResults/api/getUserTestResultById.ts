@@ -1,8 +1,9 @@
 import { useQuery } from "@tanstack/react-query";
-import { API_URL, URLS } from "../../../config";
-import { SpecificTestResultType } from "../type";
+import { API_URL, URLS } from "@config/index";
 
-export const getUserTestResultById = async (token: string, userTestResultId: string): Promise<SpecificTestResultType> => {
+import { SpecificTestResultType } from "../types";
+
+export const getUserTestResultById = async (token: string, userTestResultId: string | undefined): Promise<SpecificTestResultType> => {
     const response = await fetch(API_URL + URLS.userTestResult.getUserTestResultById(userTestResultId), {
         method: "GET",
         headers: {
@@ -19,7 +20,7 @@ export const getUserTestResultById = async (token: string, userTestResultId: str
     return response.json();
 };
 
-export const useGetUserTestResultById = (token: string, userTestResultId: string) => {
+export const useGetUserTestResultById = (token: string, userTestResultId: string | undefined) => {
     return useQuery({
         queryKey: ['userTestResultById', userTestResultId],
         queryFn: () => getUserTestResultById(token, userTestResultId),

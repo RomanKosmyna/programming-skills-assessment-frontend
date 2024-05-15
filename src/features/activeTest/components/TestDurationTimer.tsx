@@ -61,7 +61,7 @@ export default function TestDurationTimer({ testID, initialDurationTime }: TestD
     const formattedTimeLeft = `${minutes}:${seconds < 10 ? '0' : ''}${seconds}`;
 
     return (
-        <div className="flex px-3 py-2 bg-[#7AA2E3] text-main font-bold rounded-md">
+        <div className="flex px-3 py-2 bg-lightBlue text-mainWhite font-bold rounded-md">
             <p>Time left:</p>
             <span className="pl-3">{formattedTimeLeft}</span>
             <p className="pl-1">minutes</p>

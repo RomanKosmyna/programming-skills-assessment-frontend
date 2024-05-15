@@ -1,39 +1,32 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
-/* eslint-disable react-hooks/rules-of-hooks */
-import { useState } from "react";
-import { useParams } from "react-router-dom";
 import { useAllUserTestResults } from "../api/getAllUserTestResults";
 import SavedTestResultItem from "./SavedTestResultItem";
-import { UserTestResultType } from "../type";
-import HoverWindow from "../../../components/Elements/Windows/HoverWindow";
+import PendingSpinner from "@components/Pending/PendingSpinner";
+import RequestError from "@components/Error/RequestError";
+import EmptyRequestData from "@components/EmptyData/EmptyRequestData";
 
-export default function SavedTestResultsList() {
-    const token = localStorage.getItem("token")!;
-    const { username } = useParams();
-    const [hoveredItemId, setHoveredItemId] = useState(null);
+import { UserTestResultType } from "../types";
 
-    if (!username) return null;
+type Props = {
+    handleMouseEnter: (itemId: string) => void;
+    handleMouseLeave: () => void;
+    hoveredItemId: string | null;
+    token: string;
+    username: string | undefined;
+};
 
+export default function SavedTestResultsList(
+    { handleMouseEnter, handleMouseLeave, hoveredItemId, token, username }: Props
+) {
     const { isPending, isError, data, error } = useAllUserTestResults(token, username);
 
-    const handleMouseEnter = (itemId: any) => {
-        setHoveredItemId(itemId);
-    };
+    if (isPending) return <PendingSpinner />
 
-    const handleMouseLeave = () => {
-        setHoveredItemId(null);
-    };
+    if (isError) return <RequestError errorMessage={error?.message} />
 
-    if (isPending) return <div>Loading...</div>
-
-    if (isError) return <div>{error.message}</div>
-
-    if (!data?.length) return <div><h4>No test results have been saved yet.</h4></div>
+    if (!data?.length) return <EmptyRequestData message="No test results have been saved yet." />
 
     return (
-        <>
-            <HoverWindow hoveredItemId={hoveredItemId} />
-            <ul className={`w-full mt-10 flex flex-wrap gap-5
+        <ul className={`w-full mt-10 flex flex-wrap gap-5
                 ${data.length < 3 ? "justify-start" : "justify-between"}`} >
                 {data.map((testResult: UserTestResultType, index: number) => (
                     <SavedTestResultItem
@@ -45,6 +38,5 @@ export default function SavedTestResultsList() {
                     />
                 ))}
             </ul>
-        </>
     )
 }

@@ -13,7 +13,7 @@ export default function HeaderNavigation({ isLoggedIn, userName }: Props) {
                 <li>
                     <NavLink to={"/"} className={({ isActive }) =>
                         isActive ? "text-lightBlue dark:text-mainWhite font-medium text-[14px]" :
-                            "dark:text-[#adacac] hover:underline dark:hover:text-mainWhite font-medium text-[14px]"
+                            "dark:text-darkText1 hover:underline hover:text-lightBlue dark:hover:text-mainWhite font-medium text-[14px]"
                     }>
                         Home
                     </NavLink>
@@ -22,7 +22,7 @@ export default function HeaderNavigation({ isLoggedIn, userName }: Props) {
                     <NavLink to={"/test-categories"}
                         className={({ isActive }) =>
                             isActive ? "text-lightBlue dark:text-mainWhite font-medium text-[14px]" :
-                                "dark:text-[#adacac] hover:underline dark:hover:text-mainWhite font-medium text-[14px]"
+                                "dark:text-darkText1 hover:underline hover:text-lightBlue dark:hover:text-mainWhite font-medium text-[14px]"
                         }>
                         Tests
                     </NavLink>
@@ -32,7 +32,7 @@ export default function HeaderNavigation({ isLoggedIn, userName }: Props) {
                         <NavLink to={`/my-test-results/${userName}`}
                             className={({ isActive }) =>
                                 isActive ? "text-lightBlue dark:text-mainWhite font-medium text-[14px]" :
-                                    "dark:text-[#adacac] hover:underline dark:hover:text-mainWhite font-medium text-[14px]"
+                                    "dark:text-darkText1 hover:underline hover:text-lightBlue dark:hover:text-mainWhite font-medium text-[14px]"
                             }>
                             Saved results
                         </NavLink>

@@ -28,9 +28,10 @@ export default function QuestionNavigationTab({ index }: Props) {
 
     return (
         <Tab
-            _selected={{ bg: "#6499E9" }}
+            _selected={{ bg: "#0070f3" }}
             key={index}
-            className={`w-[45px] px-8 py-2 ${isOptionChosen ? "bg-lime-600" : "bg-gray-300"} text-[22px] text-white rounded-md`}
+            className={`w-[45px] px-8 py-2 ${isOptionChosen ? "bg-green-700" : "bg-[#d0d0d0] dark:bg-[#8b8b8b]"} 
+            text-[22px] font-medium text-mainWhite rounded-md hover:opacity-90  `}
         >
             {index}
         </Tab>)

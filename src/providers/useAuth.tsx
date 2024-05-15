@@ -1,9 +1,8 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import React from "react";
-
 import { createContext, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { RegisterCredentialsDTO, login, register } from "../features/auth";
-import { LoginCredentialsDTO } from "../features/auth";
+import { LoginCredentialsDTO, RegisterCredentialsDTO, login, register } from "../features/auth";
 
 import { UserProfile } from "./type";
 

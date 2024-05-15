@@ -38,9 +38,10 @@ export default function TestNavigationPanel({ testID, numberOfQuestions }: Props
     return (
         <>
             <div className="w-full flex justify-center mt-10">
-                <nav className="w-[55%] bg-[#F5F5F5] shadow-borderLight rounded-md p-4 flex justify-center">
-                    <button className="bg-lime-600 px-4 py-2 text-white 
-                opacity-70 transition-opacity rounded-md hover:opacity-100"
+                <nav className="w-[35%] bg-[#F5F5F5] dark:bg-darkAccent1 shadow-borderLight 
+                dark:shadow-none dark:border dark:border-darkBorder rounded-md p-4 flex justify-center items-center">
+                    <button className="bg-green-700 px-6 py-2 font-bold text-xl 
+                    text-mainWhite flex justify-center rounded-lg transition-opacity hover:opacity-90"
                         onClick={() => finishTestAndSendData()}
                     >
                         Finish Test

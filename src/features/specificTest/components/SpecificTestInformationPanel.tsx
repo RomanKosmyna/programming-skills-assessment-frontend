@@ -13,7 +13,10 @@ export default function SpecificTestInformationPanel(
 ) {
 
     return (
-        <div className="w-full flex flex-col laptop:flex-row gap-5 laptop:gap-20 mt-8 p-3 laptop:bg-accent1 laptop:shadow-borderLight rounded-lg">
+        <div className="w-full flex flex-col laptop:flex-row gap-5 
+        laptop:gap-20 mt-8 p-3 laptop:bg-accent1 laptop:dark:bg-darkAccent1 laptop:shadow-borderLight
+        laptop:dark:shadow-none laptop:dark:border laptop:dark:border-darkBorder rounded-lg"
+        >
             <SpecificTestDescription description={description} />
             <SpecificTestTestedSkills testedSkills={testedSkills} />
             <SpecificTestDuration durationMinutes={durationMinutes} />

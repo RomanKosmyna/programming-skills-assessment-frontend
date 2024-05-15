@@ -54,8 +54,9 @@ export default function AnswerOption(
 
     return (
         <div key={index}
-            className={`max-w-[60%] px-5 py-3 rounded-lg cursor-pointer opacity-70 
-            hover:opacity-100 transition-opacity ${chosenAnswer ? "bg-lime-600" : "bg-[#6499E9]"}`}
+            className={`max-w-[60%] px-5 py-3 rounded-lg cursor-pointer transition-all font-medium
+            ${chosenAnswer ? "bg-green-700 hover:bg-green-800" : "bg-lightBlue hover:bg-darkerLightBlue"}
+            `}
             onClick={() => performTask()}
         >
             <p className="text-white">{optionText}</p>

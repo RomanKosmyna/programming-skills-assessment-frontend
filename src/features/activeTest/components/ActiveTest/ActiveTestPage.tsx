@@ -15,7 +15,9 @@ export default function ActiveTestPage() {
     return (
         <GeneralLayout>
             <PaddingLayout>
-                <div className={`${isTestFinished ? "z-40 bg-main p-4 rounded-lg" : ""}`}>
+                <div className={`${isTestFinished ? 
+                    "z-40 bg-mainWhite dark:bg-mainDark dark:border dark:border-darkBorder p-4 rounded-lg" : 
+                    ""}`}>
                     <ActiveTestHeadingWithTimer />
                     <ActiveTestInformation activeTestId={activeTestId} />
                 </div>

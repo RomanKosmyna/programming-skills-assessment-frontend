@@ -10,13 +10,13 @@ export default function ActiveTestHeadingWithTimer() {
     return (
         <div className="flex flex-col mt-3">
             <div className="flex justify-between items-center">
-                <h2 className="font-bold text-[36px]">{testName}</h2>
+                <h2 className="font-bold text-mainDark dark:text-darkHeading text-[36px]">{testName}</h2>
                 <TestDurationTimer
                     testID={testID}
                     initialDurationTime={initialDurationTime}
                 />
             </div>
-            <SeparationLine />
+            <SeparationLine marginTop="2" />
         </div>
     )
 }

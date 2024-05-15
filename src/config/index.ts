@@ -26,7 +26,8 @@ export const URLS = {
     },
     userTestResult: {
         saveUserTestResult: `${userTestResult}/savetestresult`,
-        getAllUserTestResults: (username: string) => `${userTestResult}/getallusertestresults/${username}`,
-        getUserTestResultById: (userTestResultId: string) => `${userTestResult}/getusertestresultbyid/${userTestResultId}`
+        getAllUserTestResults: (username: string | undefined) => `${userTestResult}/getallusertestresults/${username}`,
+        getUserTestResultById: (userTestResultId: string | undefined) => `${userTestResult}/getusertestresultbyid/${userTestResultId}`,
+        deleteUserTestResultById: (userTestResultId: string | undefined) => `${userTestResult}/deleteusertestresult/${userTestResultId}`
     }
 };

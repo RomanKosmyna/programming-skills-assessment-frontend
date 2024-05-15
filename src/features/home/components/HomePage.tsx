@@ -19,13 +19,13 @@ export default function HomePage() {
     return (
         <GeneralLayout>
             <header className="w-full flex justify-center pt-16">
-                <h2 className="font-bold text-4xl">Getting Started</h2>
+                <h2 className="text-mainDark dark:text-mainWhite font-bold text-4xl">Getting Started</h2>
             </header>
             <div className="mt-4 flex justify-end">
                 <InstructionDisplayButton changeDisplay={changeDisplay} />
             </div>
             {(isStepperActive || instructionDisplay === "stepper") && (instructionDisplay === null || instructionDisplay === "stepper") && (
-                <div className="flex flex-col mt-10">
+                <div className="flex flex-col mt-14">
                     <InstructionStepper />
                     <InstructionWithStepper />
                 </div>

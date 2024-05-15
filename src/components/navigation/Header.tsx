@@ -12,7 +12,7 @@ export default function Header() {
         <header className="w-full h-[64px] bg-mainWhite dark:bg-darkAccent1 
         px-6 flex justify-center shadow-light dark:shadow-dark fixed z-20">
             <div className="w-full min-h-full max-w-[1400px] flex items-center">
-                <div>
+                <div className="hidden laptop:block">
                     <h1 className="font-medium text-[24px] mr-6 dark:text-mainWhite">Application Name</h1>
                 </div>
                 <div className="flex-grow flex justify-between">

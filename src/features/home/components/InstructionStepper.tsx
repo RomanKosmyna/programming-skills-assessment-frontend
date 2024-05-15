@@ -11,8 +11,8 @@ import {
     Stepper,
     useSteps,
 } from '@chakra-ui/react';
-import { useAppDispatch } from '../../../hooks';
 import { activeQuestionStatus } from '../slices/activeInstructionStepSlice';
+import { useAppDispatch } from 'src/hooks';
 
 const steps = [
     { title: 'First', description: 'Choose a Category' },
@@ -34,14 +34,14 @@ export default function InstructionStepper() {
     };
 
     return (
-        <Stepper index={activeStep}>
+        <Stepper size="lg" colorScheme="red" index={activeStep}>
             {steps.map((step, index) => (
                 <Step
                     key={index}
                     onClick={() => handleInstructionStep(index)}
                     className="cursor-pointer"
                 >
-                    <StepIndicator>
+                    <StepIndicator className="dark:text-mainWhite font-medium">
                         <StepStatus
                             complete={<StepIcon />}
                             incomplete={<StepNumber />}
@@ -49,8 +49,12 @@ export default function InstructionStepper() {
                         />
                     </StepIndicator>
                     <Box flexShrink='0'>
-                        <StepTitle>{step.title}</StepTitle>
-                        <StepDescription>{step.description}</StepDescription>
+                        <StepTitle className="font-medium dark:text-mainWhite">
+                            {step.title}
+                        </StepTitle>
+                        <StepDescription className=" dark:text-darkText1">
+                            {step.description}
+                        </StepDescription>
                     </Box>
                     <StepSeparator />
                 </Step>

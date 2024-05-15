@@ -5,6 +5,9 @@ type Props = {
 export default function SkillTag({ text }: Props) {
 
     return (
-        <li className="inline-block text-[#666] text-[14px] border py-[2px] px-1 rounded-md">{text}</li>
+        <li className="inline-block text-[#666] dark:text-mainWhite font-medium 
+        text-[12px] border dark:border-darkBorder dark:bg-mainDark py-[2px] px-1 rounded-md">
+            {text}
+        </li>
     )
 }

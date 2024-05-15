@@ -14,8 +14,10 @@ export default function QuestionsAnswerOptionPanel({ questions }: Props) {
             <TabPanels className="w-full mt-10">
                 {questions.map((question: QuestionType, index: number) => (
                     <TabPanel key={index}>
-                        <h3 className="font-bold text-[30px]">Question №{index + 1}</h3>
-                        <p className="mt-8 text-[24px]">{question.questionText}</p>
+                        <h3 className="font-bold text-mainDark dark:text-darkHeading text-[30px]">
+                            Question №{index + 1}
+                        </h3>
+                        <p className="mt-8 text-mainDark dark:text-darkText1 text-[24px]">{question.questionText}</p>
                         <QuestionAnswerOptionList
                             questionNumber={question.questionNumber}
                             answerOptions={question.answerOptions}

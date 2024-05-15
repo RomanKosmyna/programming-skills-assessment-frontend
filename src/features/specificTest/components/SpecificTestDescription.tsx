@@ -8,11 +8,11 @@ export default function SpecificTestDescription({ description }: TestDescription
     return (
         <section>
             <div className="flex items-center gap-2">
-                <InfoOutlineIcon w={5} h={5} />
-                <h4 className="font-bold text-[22px]">Description</h4>
+                <InfoOutlineIcon w={5} h={5} className="text-mainDark dark:text-darkHeading" />
+                <h4 className="font-bold text-mainDark dark:text-darkHeading text-[22px]">Description</h4>
             </div>
             <div className="w-full mt-2">
-                <p className="text-[17px] text-[#666]">{description}</p>
+                <p className="text-mainDark dark:text-darkText1 text-[17px]">{description}</p>
             </div>
         </section>
     )

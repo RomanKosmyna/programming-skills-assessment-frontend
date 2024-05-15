@@ -31,7 +31,7 @@ export default function SpecificTest({ setTestCategoryId, specificTestId }: Prop
 
     return (
         <div className="w-full mt-4 p-7 flex-grow">
-            <h3 className="font-bold text-[40px]">{testName}</h3>
+            <h3 className="font-bold text-mainDark dark:text-darkHeading text-[40px]">{testName}</h3>
             <SpecificTestInformationPanel
                 description={description}
                 testedSkills={testedSkills}

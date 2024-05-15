@@ -15,14 +15,14 @@ export default function HeadingWithImage({ testCategoryId, headingText = "Tests"
     return (
         <div className="w-full pt-3">
             <div className="w-full flex items-center">
-                <h2 className="font-bold text-[36px]">{`${testCategoryName} ${headingText}`}</h2>
+                <h2 className="text-mainDark dark:text-darkHeading font-bold text-[36px]">{`${testCategoryName} ${headingText}`}</h2>
                 <img
                     src={testCategoryImage}
                     alt={`${testCategoryName} programming language logo`}
                     className="h-[50px] ml-10"
                 />
             </div>
-            <SeparationLine />
+            <SeparationLine marginTop="2" />
         </div>
     )
 }

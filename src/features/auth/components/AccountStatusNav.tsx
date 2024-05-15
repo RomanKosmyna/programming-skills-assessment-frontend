@@ -9,10 +9,11 @@ type Props = {
 export default function AccountStatusNav({ text, linkRoute, linkText }: Props) {
     return (
         <div className="flex flex-col items-center mt-10">
-            <p className="font-bold text-lg">{text}</p>
+            <p className="font-bold text-mainDark dark:text-darkHeading text-lg">{text}</p>
             <Link
                 to={linkRoute}
-                className="font-medium text-lightBlue hover:text-darkerLightBlue hover:underline"
+                className="font-medium text-lightBlue hover:text-darkerLightBlue hover:underline
+                transition-all"
             >
                 {linkText}
             </Link>

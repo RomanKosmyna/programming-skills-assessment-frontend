@@ -12,16 +12,23 @@ export default function TestByCategoryItem(
 
     return (
         <li
-            className={`w-full tablet:basis-1/2 desktop:w-[350px] bg-white shadow-lg border border-[#eaeaea] 
+            className={`w-full tablet:basis-1/2 desktop:w-[350px] 
+            bg-mainWhite dark:bg-darkAccent1 shadow-lg border border-[#eaeaea]
+            dark:border-darkBorder hover:dark:border-mainWhite
             rounded-lg select-none ${isItemHovered ? "z-50 relative" : ""}`}
             onMouseEnter={handleMouseEnter}
             onMouseLeave={handleMouseLeave}
         >
-            <Link to={`/test/${testID}`} className="flex w-full min-h-full flex-col flex-grow p-6">
-                <Heading text={testName} />
-                <TestDuration durationMinutes={durationMinutes} />
+            <Link
+                to={`/test/${testID}`}
+                className="flex w-full min-h-full flex-col flex-grow justify-between p-6"
+            >
+                <div className="flex flex-col">
+                    <Heading text={testName} />
+                    <TestDuration durationMinutes={durationMinutes} />
+                </div>
                 <div className="mt-5">
-                    <p className="font-medium">Tested skills</p>
+                    <p className="font-medium text-mainDark dark:text-darkHeading">Tested skills</p>
                     <SkillTagList testedSkills={testedSkills} />
                 </div>
             </Link>
