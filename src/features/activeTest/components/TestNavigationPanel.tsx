@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useToast } from "@chakra-ui/react";
 import UnansweredQuestionsWarningModal from "./UnansweredQuestionsWarningModal";
 import { finishTest, setResult } from "../slices/testResultSlice";
 
@@ -12,6 +13,7 @@ type Props = {
 };
 
 export default function TestNavigationPanel({ testID, numberOfQuestions }: Props) {
+    const toast = useToast();
     const state = useAppSelector(state => state.activeTestQuestionAnswerOption.questions);
     const dispatch = useAppDispatch();
 
@@ -30,7 +32,13 @@ export default function TestNavigationPanel({ testID, numberOfQuestions }: Props
                 dispatch(setResult(result));
                 dispatch(finishTest(true));
             } catch (error) {
-                console.log(error);
+                toast({
+                    title: 'Test Result Status',
+                    description: "Something went wrong",
+                    status: 'error',
+                    duration: 3000,
+                    isClosable: true,
+                });
             }
         }
     };

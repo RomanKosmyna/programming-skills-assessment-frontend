@@ -17,7 +17,7 @@ export default function SavedTestResultItem(
 
     return (
         <li
-            className={`w-[350px] max-h-[350px] bg-mainWhite dark:bg-darkAccent1 shadow-lg border
+            className={`max-h-[350px] bg-mainWhite dark:bg-darkAccent1 shadow-lg border
             dark:shadow-none dark:border dark:border-darkBorder border-[#eaeaea] 
             rounded-lg select-none ${isItemHovered ? "z-50 relative" : ""}`}
             onMouseEnter={handleMouseEnter}

@@ -1,4 +1,5 @@
 import { Dispatch, SetStateAction } from "react";
+import { useToast } from "@chakra-ui/react";
 import { formTestResult } from "../api/formTestResult";
 import { finishTest, setResult } from "../slices/testResultSlice";
 
@@ -12,6 +13,7 @@ type UnansweredQuestionsWarningModalProps = {
 
 export default function UnansweredQuestionsWarningModal(
     { isActive, setIsActive, testID }: UnansweredQuestionsWarningModalProps) {
+    const toast = useToast();
     const state = useAppSelector(state => state.activeTestQuestionAnswerOption.questions);
     const dispatch = useAppDispatch();
 
@@ -21,7 +23,13 @@ export default function UnansweredQuestionsWarningModal(
             dispatch(setResult(result));
             dispatch(finishTest(true));
         } catch (error) {
-            console.log(error);
+            toast({
+                title: 'Unanswered questions Status',
+                description: "Something went wrong",
+                status: 'error',
+                duration: 3000,
+                isClosable: true,
+            });
         }
     };
 

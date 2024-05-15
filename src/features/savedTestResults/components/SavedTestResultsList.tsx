@@ -26,7 +26,7 @@ export default function SavedTestResultsList(
     if (!data?.length) return <EmptyRequestData message="No test results have been saved yet." />
 
     return (
-        <ul className={`w-full mt-10 flex flex-wrap gap-5
+        <ul className={`w-full mt-10 grid grid-cols-1 laptop:grid-cols-2 desktop:grid-cols-3 gap-5
                 ${data.length < 3 ? "justify-start" : "justify-between"}`} >
                 {data.map((testResult: UserTestResultType, index: number) => (
                     <SavedTestResultItem
