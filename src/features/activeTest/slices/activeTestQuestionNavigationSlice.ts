@@ -32,6 +32,9 @@ export const activeTestQuestionNavigationSlice = createSlice({
 
             state.questionsStatus[questionStatusIndex] = action.payload;
         },
+        isAnswerChosen: (state) => {
+            state.questionsStatus
+        },
         clearQuestionStatus: (state) => {
             state.questionsStatus = []
         }

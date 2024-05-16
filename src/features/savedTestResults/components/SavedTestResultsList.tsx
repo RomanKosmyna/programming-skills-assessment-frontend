@@ -28,15 +28,16 @@ export default function SavedTestResultsList(
     return (
         <ul className={`w-full mt-10 grid grid-cols-1 laptop:grid-cols-2 desktop:grid-cols-3 gap-5
                 ${data.length < 3 ? "justify-start" : "justify-between"}`} >
-                {data.map((testResult: UserTestResultType, index: number) => (
-                    <SavedTestResultItem
-                        key={index}
-                        testResult={testResult}
-                        isItemHovered={hoveredItemId == testResult.userTestResultID}
-                        handleMouseEnter={() => handleMouseEnter(testResult.userTestResultID)}
-                        handleMouseLeave={handleMouseLeave}
-                    />
-                ))}
-            </ul>
+            {data.map((testResult: UserTestResultType, index: number) => (
+                <SavedTestResultItem
+                    index={index}
+                    key={index}
+                    testResult={testResult}
+                    isItemHovered={hoveredItemId == testResult.userTestResultID}
+                    handleMouseEnter={() => handleMouseEnter(testResult.userTestResultID)}
+                    handleMouseLeave={handleMouseLeave}
+                />
+            ))}
+        </ul>
     )
 }

@@ -15,11 +15,13 @@ export default function InstructionStepItem({ heading, text, secondText, imagePa
                 <p className="mt-2 text-mainDark dark:text-darkText1">{text}</p>
                 {secondText && <p className="mt-2 text-mainDark dark:text-darkText1">{secondText}</p>}
             </div>
-            <img
-                src={imagePath}
-                alt={heading}
-                className="max-w-full h-[200px] object-contain rounded-lg mt-3"
-            />
+            <div className="flex justify-center">
+                <img
+                    src={imagePath}
+                    alt={heading}
+                    className="max-w-full h-[200px] object-contain rounded-lg mt-3"
+                />
+            </div>
         </li>
     )
 }

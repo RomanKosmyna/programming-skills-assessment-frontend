@@ -1,10 +1,9 @@
 import { useState } from "react";
-import { addAnswerOptionWithNewArray } from "../../util/addAnswerOptionWithNewArray";
-import { addAnswerOption } from "../../util/addAnswerOption";
-import { removeAnswerOption } from "../../util/removeAnswerOption";
-import { activeQuestionStatus } from "../../slices/activeTestQuestionNavigationSlice";
-
-import { AnswerOptionType } from "../../types/answerOption";
+import { activeQuestionStatus } from "@features/activeTest/slices/activeTestQuestionNavigationSlice";
+import { AnswerOptionType } from "@features/activeTest/types/answerOption";
+import { addAnswerOption } from "@features/activeTest/util/addAnswerOption";
+import { addAnswerOptionWithNewArray } from "@features/activeTest/util/addAnswerOptionWithNewArray";
+import { removeAnswerOption } from "@features/activeTest/util/removeAnswerOption";
 
 import { useAppDispatch, useAppSelector } from "src/hooks";
 
@@ -27,6 +26,8 @@ export default function AnswerOption(
 
     const dispatch = useAppDispatch();
     const state = useAppSelector(state => state.activeTestQuestionAnswerOption.questions);
+    const questionsStatusState = useAppSelector(state => state.activeTestQuestionNavigation.questionsStatus);
+    const isAnyOptionChosen = questionsStatusState.some(status => status.isOptionChosen);
 
     const performTask = () => {
         const existingQuestion = state.some(question => question.questionID === questionID);
