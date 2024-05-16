@@ -5,14 +5,14 @@ import testsByCategoryImage from "../assets/tests-by-category-instruction-step.p
 import specificTestPreparationImage from "../assets/specific-test-preparation-instruction-step.png";
 import specificTestTestingImage from "../assets/specific-test-testing-instruction-step.png";
 
-import { useAppSelector } from "../../../hooks";
+import { useAppSelector } from "src/hooks";
 
 export default function InstructionWithStepper() {
     const { activeStep } = useAppSelector(state => state.activeInstructionStep);
 
     return (
-        <div className="w-full pt-10 flex flex-col">
-            <ol className="w-full flex flex-col items-center gap-3">
+        <div className="w-full pt-10 flex flex-col items-center">
+            <ol className="max-w-[600px] flex flex-col items-center gap-3">
                 {activeStep === 0 && (
                     <InstructionStepItem
                         heading="Choose a Category of Interest for Assessment."

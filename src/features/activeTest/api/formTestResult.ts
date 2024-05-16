@@ -1,5 +1,6 @@
+import { API_URL, URLS } from "@config/index";
 import { useQuery } from "@tanstack/react-query";
-import { API_URL, URLS } from "../../../config";
+
 import { ExpectedTestResultType, TestResultType } from "../types";
 
 export const formTestResult = async (activeTestId: string | undefined, requestBody: TestResultType[]): Promise<ExpectedTestResultType[]> => {

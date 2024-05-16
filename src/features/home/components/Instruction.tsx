@@ -8,8 +8,8 @@ import specificTestTestingImage from "../assets/specific-test-testing-instructio
 export default function Instruction() {
 
     return (
-        <div className="w-full pt-10 flex flex-col">
-            <ol className="w-full flex flex-col gap-3">
+        <div className="w-full pt-10 flex flex-col items-center">
+            <ol className="max-w-[600px] flex flex-col items-center gap-3">
                 <InstructionStepItem
                     heading="Choose a Category of Interest for Assessment."
                     text="Each category represents a curated set of tests categorized by programming languages."

@@ -79,10 +79,11 @@ export default function LoginForm() {
                                 </button>
                             </div>
                         </>
-                    )}
-                </Form>
+                    )
+                    }
+                </Form >
                 <GuestLink />
-            </div>
-        </div>
+            </div >
+        </div >
     )
 }
