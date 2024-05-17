@@ -36,7 +36,7 @@ export default function UnansweredQuestionsWarningModal(
     return (
         <>
             {isActive && (
-                <div className="w-full min-h-screen absolute top-0 left-0 bg-mainDark/[.5] dark:bg-mainDark/[.8] z-10 flex justify-center items-center">
+                <div className="w-full min-h-screen absolute top-0 left-0 bg-mainDark/[.5] dark:bg-mainDark/[.8] z-40 flex justify-center items-center">
                     <div className="bg-mainWhite dark:bg-mainDark dark:border dark:border-darkBorder p-4 rounded-lg">
                         <p className="text-mainDark dark:text-darkHeading font-medium">Some of the questions remain unanswered.</p>
                         <p className="text-mainDark dark:text-darkHeading font-medium mt-2">Are you sure that you want to finish the test?</p>
