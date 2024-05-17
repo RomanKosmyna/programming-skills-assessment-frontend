@@ -7,6 +7,8 @@ import { clearQuestions } from "@features/activeTest/slices/activeTestQuestionAn
 import { resetTest } from "@features/activeTest/slices/testResultSlice";
 
 import { useAppDispatch, useAppSelector } from "src/hooks";
+import { PDFDownloadLink } from "@react-pdf/renderer";
+import RenderPDFResult from "./RenderPDFResult";
 
 export default function TestResultNavigation() {
     const { isLoggedIn } = useAuth();
@@ -66,7 +68,7 @@ export default function TestResultNavigation() {
             },
             body: JSON.stringify(testResultData)
         });
-        
+
         if (saveTestResult.ok) {
             toast({
                 containerStyle: {
@@ -114,12 +116,19 @@ export default function TestResultNavigation() {
                         Save Results
                     </button>
                 )}
-                <button
-                    className="bg-green-700 px-6 py-2 font-bold text-xl 
-                    text-mainWhite flex justify-center rounded-lg transition-opacity hover:opacity-90"
-                >
-                    Download results in PDF
-                </button>
+                <PDFDownloadLink document={
+                    <RenderPDFResult
+                        testName={testName}
+                        totalDurationTimer={totalDurationTimer}
+                        remainingDurationTimer={remainingDurationTimer}
+                        result={result}
+                    />
+                } fileName='test result.pdf'>
+                    <div className="bg-green-700 px-6 py-2 font-bold text-xl 
+                    text-mainWhite flex justify-center rounded-lg transition-opacity hover:opacity-90">
+                        Download results in PDF
+                    </div>
+                </PDFDownloadLink>
             </nav>
         </div>
     )
