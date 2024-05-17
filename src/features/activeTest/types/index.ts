@@ -24,5 +24,5 @@ export type ExpectedTestResultType = {
 
 export type TestResultType = {
     questionID: string;
-    arrayOfAnswers: number[];
+    answers: number[];
 }

@@ -6,7 +6,7 @@ interface ActiveTestState {
 
 interface QuestionState {
     questionID: string;
-    arrayOfAnswers: number[];
+    answers: number[];
 }
 
 interface OptionState {
@@ -23,7 +23,7 @@ export const activeTestQuestionAnswerOptionSlice = createSlice({
     initialState,
     reducers: {
         addAnswerOptionWithNewArray: (state, action: PayloadAction<QuestionState>) => {
-            const { questionID, arrayOfAnswers } = action.payload;
+            const { questionID, answers } = action.payload;
 
             const questionExists = state.questions.some(question => question.questionID === questionID);
 
@@ -32,7 +32,7 @@ export const activeTestQuestionAnswerOptionSlice = createSlice({
             } else {
                 const existingQuestionIndex = state.questions.findIndex(question => question.questionID === questionID);
 
-                state.questions[existingQuestionIndex].arrayOfAnswers.push(...arrayOfAnswers);
+                state.questions[existingQuestionIndex].answers.push(...answers);
             }
         },
         addAnswer: (state, action: PayloadAction<OptionState>) => {
@@ -40,15 +40,15 @@ export const activeTestQuestionAnswerOptionSlice = createSlice({
 
             const questionIndex = state.questions.findIndex(question => question.questionID === questionID);
 
-            state.questions[questionIndex].arrayOfAnswers.push(optionNumber);
+            state.questions[questionIndex].answers.push(optionNumber);
         },
         removeAnswer: (state, action: PayloadAction<OptionState>) => {
             const { questionID, optionNumber } = action.payload;
 
             const questionIndex = state.questions.findIndex(question => question.questionID === questionID);
 
-            if (state.questions[questionIndex].arrayOfAnswers.includes(optionNumber)) {
-                state.questions[questionIndex].arrayOfAnswers = state.questions[questionIndex].arrayOfAnswers.filter((answerOption: number) => answerOption !== optionNumber);
+            if (state.questions[questionIndex].answers.includes(optionNumber)) {
+                state.questions[questionIndex].answers = state.questions[questionIndex].answers.filter((answerOption: number) => answerOption !== optionNumber);
             }
         },
         clearQuestions: (state) => {

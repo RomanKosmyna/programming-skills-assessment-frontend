@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { addAnswerOptionWithNewArray as addAnswerOptionWithArray } from "../slices/activeTestQuestionAnswerOptionSlice";
 import { AnswerOptionType } from "../types";
 
@@ -8,10 +9,10 @@ export const addAnswerOptionWithNewArray =
 
         const questionPayload = {
             questionID: questionID,
-            arrayOfAnswers: Array<number>()
+            answers: Array<number>()
         };
 
-        questionPayload.arrayOfAnswers.push(optionNumber);
+        questionPayload.answers.push(optionNumber);
 
         dispatch(addAnswerOptionWithArray(questionPayload));
         setChosenAnswer(true);
