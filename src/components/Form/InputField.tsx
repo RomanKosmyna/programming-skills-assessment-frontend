@@ -14,11 +14,9 @@ export const InputField = (props: InputFieldProps) => {
         <FieldWrapper label={label} error={error}>
             <input
                 type={type}
-                className={`appearance-none block w-full px-3 py-2 border bg-mainWhite dark:bg-mainDark border-gray-300 
-                dark:border-darkBorder rounded-md shadow-smplaceholder-gray-400 focus:outline-none focus:ring-blue-500 
-                focus:border-blue-500 sm:text-sm dark:text-mainWhite dark:focus:ring-mainWhite dark:focus:border-mainWhite
-          ${className}
-          `}
+                className={`block w-full px-3 py-2 border bg-mainWhite dark:bg-mainDark border-gray-300 
+                dark:border-darkBorder rounded-md focus:outline-none focus:ring-blue-500 focus:border-blue-500 
+                sm:text-sm dark:text-mainWhite dark:focus:ring-mainWhite dark:focus:border-mainWhite ${className}`}
                 {...registration}
             />
         </FieldWrapper>
